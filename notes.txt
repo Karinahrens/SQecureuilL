@@ -1,0 +1,402 @@
+<home.html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Posts Filter</title>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Posts Dashboard</h1>
+
+    </nav>
+    <div class="container">
+        <aside class="filter-section">
+            <h2>Filters</h2>
+            <label>
+                Category:
+                <select id="category-filter">
+                    <option value="all">All</option>
+                    <option value="graffiti">Graffiti</option>
+                    <option value="fly-tipping">Fly tipping </option>
+                    <option value="noise-disturbance">Noise Disturbance</option>
+                    <option value="anti-social-behaviour">Anti-Social Behavious</option>
+                    <option value="street-sweeping">Street Sweeping</option>
+                    <option value="potholes">Potholes</option>
+                    <option value="parking">Parking</option>
+                    <option value="damaged-property">Damaged Property</option>
+                </select>
+                
+            </label>
+            <label>
+                <input type="radio" name="sort-order" value="date" checked>
+                Order by Date
+            </label>
+            <label>
+                <input type="radio" name="sort-order" value="votes">
+                Order by Number of Votes
+            </label>
+            <label>
+                <input type="radio" name="sort-order" value="status">
+                Order by Status
+            </label>
+
+        </aside>
+
+        <main class="posts-section">
+            <!-- Posts will be populated here from the database -->
+        </main>
+    </div>
+    <!-- Modal -->
+<div id="postModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalContent"></p>
+        <p><strong>Author:</strong> <span id="modalAuthor"></span></p>
+        <button id="voteBtn">Vote</button>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+<script.js>
+function performLogin () {
+    alert("You've successfully logged in!")
+}
+
+function showRegistration() {
+    alert("Redirecting to registration page...")
+}
+document.addEventListener("DOMContentLoaded", function () {
+    const postsSection = document.querySelector('.posts-section');
+    const filters = document.querySelectorAll('[name="sort-order"]');
+    const categoryFilter = document.querySelector('#category-filter');
+
+    const fakePosts = [
+        {
+            title: "Graffiti on School Wall",
+            content: "Last night, some miscreants drew graffiti on our local school wall. It's inappropriate and sets a wrong example for the kids.",
+            category: "graffiti",
+            completionStatus: "pending",
+            date: "2023-09-15",
+            votes: 12
+        },
+        {
+            title: "Fly Tipping at Elm Street",
+            content: "Someone dumped a lot of household waste on Elm Street. It's now causing a blockage and smells terrible.",
+            category: "fly-tipping",
+            completionStatus: "done",
+            date: "2023-09-10",
+            votes: 20
+        },
+        {
+            title: "Loud Parties at Pine Avenue",
+            content: "There have been nightly parties at Pine Avenue, disturbing the elderly in our neighborhood.",
+            category: "noise-disturbance",
+            completionStatus: "pending",
+            date: "2023-09-01",
+            votes: 8
+        },
+        {
+            title: "Group causing trouble at the park",
+            content: "A group of teenagers are frequently causing disturbances at the local park, making it hard for families to enjoy.",
+            category: "anti-social-behaviour",
+            completionStatus: "in-progress",
+            date: "2023-08-20",
+            votes: 15
+        },
+        {
+            title: "Main Street Needs Cleaning",
+            content: "Main Street has a lot of litter and it's been weeks since it was last cleaned.",
+            category: "street-sweeping",
+            completionStatus: "pending",
+            date: "2023-09-11",
+            votes: 9
+        },
+        {
+            title: "Dangerous Pothole near Mall",
+            content: "A huge pothole near the shopping mall entrance has damaged several vehicles. Immediate attention needed!",
+            category: "potholes",
+            completionStatus: "done",
+            date: "2023-07-30",
+            votes: 25
+        },
+        {
+            title: "Illegal Parking at Rose Lane",
+            content: "Every evening, vehicles are parked illegally at Rose Lane blocking the residents' driveways.",
+            category: "parking",
+            completionStatus: "in-progress",
+            date: "2023-09-05",
+            votes: 10
+        },
+        {
+            title: "Vandalized Benches at Park",
+            content: "The benches at the city park were recently vandalized and need urgent repair.",
+            category: "damaged-property",
+            completionStatus: "pending",
+            date: "2023-08-18",
+            votes: 6
+        },
+        {
+            title: "Noise from Construction Site",
+            content: "The construction site near Maple Street is causing noise disturbances during odd hours.",
+            category: "noise-disturbance",
+            completionStatus: "in-progress",
+            date: "2023-09-03",
+            votes: 7
+        },
+        {
+            title: "Overflowing Bins on Cherry Avenue",
+            content: "The bins on Cherry Avenue are overflowing and haven't been cleared for days.",
+            category: "street-sweeping",
+            completionStatus: "done",
+            date: "2023-09-12",
+            votes: 11
+        }
+    ];
+    
+
+    // Initial display
+    displayPosts(fakePosts);
+
+    filters.forEach(filter => {
+        filter.addEventListener('change', function () {
+            filterAndDisplayPosts();
+        });
+    });
+
+    categoryFilter.addEventListener('change', function () {
+        filterAndDisplayPosts();
+    });
+
+    function filterAndDisplayPosts() {
+        const sortOrder = document.querySelector('[name="sort-order"]:checked').value;
+        const category = categoryFilter.value;
+
+        let filteredPosts = [...fakePosts];
+
+        if (category !== 'all') {
+            filteredPosts = filteredPosts.filter(post => post.category === category);
+        }
+
+        switch (sortOrder) {
+            case "date":
+                filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                break;
+            case "votes":
+                filteredPosts.sort((a, b) => b.votes - a.votes);
+                break;
+            case "status":
+                filteredPosts.sort((a, b) => a.completionStatus.localeCompare(b.completionStatus));
+                break;
+        }
+
+        displayPosts(filteredPosts);
+    }
+
+    function displayPosts(posts) {
+        let postsHTML = "";
+        posts.forEach(post => {
+            postsHTML += `<div class="post">
+                <h3>${post.title}</h3>
+                <p>${post.content}</p>
+                <p>Category: ${post.category}</p>
+                <p>Status: ${post.completionStatus}</p>
+                <p>Date: ${post.date}</p>
+                <p>Votes: ${post.votes}</p>
+            </div>`;
+        });
+        postsSection.innerHTML = postsHTML;
+    }
+});
+function populatePosts() {
+    const postsSection = document.querySelector('.posts-section');
+    fakePosts.forEach(post => {
+        postsSection.innerHTML += `
+            <div class="post">
+                <h3>${post.title}</h3>
+                <p>${post.content}</p>
+                <!-- Other details can be added here as needed -->
+            </div>
+        `;
+    });
+}
+populatePosts();
+
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("postModal");
+    const closeModal = document.querySelector(".close");
+    const posts = document.querySelectorAll(".post");
+    posts.forEach((post, index) => {
+        post.addEventListener("click", () => {
+            document.getElementById("modalTitle").textContent = fakePosts[index].title;
+            document.getElementById("modalContent").textContent = fakePosts[index].content;
+            document.getElementById("modalAuthor").textContent = fakePosts[index].author;
+            modal.style.display = "block";
+        });
+    });
+    
+
+    closeModal.onclick = () => {
+        modal.style.display = "none";
+    };
+
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    document.getElementById("voteBtn").addEventListener("click", () => {
+        fakePosts[index].votes += 1;  // Increase vote count
+        alert("Thanks for voting!");
+    });
+});
+
+<style.css>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;  
+    width: 50%;
+    height: 50%;
+}
+
+.login-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block; 
+}
+
+.btn-group {
+    margin-top: 20px;
+}
+
+.login-btn, .register-btn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+.login-btn {
+    background-color: #007BFF;
+    color: white;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+.register-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.register-btn:hover {
+    background-color: #45a049;
+}
+
+.container {
+    display: flex;
+    margin-top: 50px;
+}
+.filter-section {
+    flex: 1;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-right: 20px;  
+}
+
+.posts-section {
+    flex: 3;
+    padding: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.post {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 90%;  
+    margin-left: auto;  
+    margin-right: auto; 
+}
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.navbar h1 {
+    margin: 0;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 1; /* Sit on top */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover {
+    color: black;
+}
