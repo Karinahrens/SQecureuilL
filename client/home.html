@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Posts Filter</title>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Posts Dashboard</h1>
+
+    </nav>
+   
+    <div class="container">
+        <div class="sidebar">
+        <aside class="filter-section">
+            <h2>Filters</h2>
+            <label>
+                Category:
+                <select id="category-filter">
+                    <option value="all">All</option>
+                    <option value="graffiti">Graffiti</option>
+                    <option value="fly-tipping">Fly tipping </option>
+                    <option value="noise-disturbance">Noise Disturbance</option>
+                    <option value="anti-social-behaviour">Anti-Social Behavious</option>
+                    <option value="street-sweeping">Street Sweeping</option>
+                    <option value="potholes">Potholes</option>
+                    <option value="parking">Parking</option>
+                    <option value="damaged-property">Damaged Property</option>
+                </select>
+                
+            </label>
+            <label>
+                <input type="radio" name="sort-order" value="date" checked>
+                Order by Date
+            </label>
+            <label>
+                <input type="radio" name="sort-order" value="votes">
+                Order by Number of Votes
+            </label>
+            <label>
+                <input type="radio" name="sort-order" value="status">
+                Order by Status
+            </label>
+            <div class="create-post-button">
+                <button id="openPostModalBtn">Create Post</button>
+            </div>
+        </aside>
+        </div>
+        <div class="main-content">
+
+        <main class="posts-section">
+            <!-- Posts will be populated here from the database -->
+        </main>
+        </div>
+    </div>
+    <!-- Modal -->
+<div id="postModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalContent"></p>
+        <p><strong>Author:</strong> <span id="modalAuthor"></span></p>
+        <button id="voteBtn">Vote</button>
+    </div>
+</div>
+<div id="createPostModal" class="modal">
+    <div class="modal-content">
+        <span class="close-create">&times;</span>
+        <h2>Create a New Post</h2>
+        <form id="createPostForm">
+            <label for="postTitle">Title:</label>
+            <input type="text" id="postTitle" required>
+            
+            <label for="postContent">Content:</label>
+            <textarea id="postContent" rows="5" required></textarea>
+
+            <label for="postCategory">Category:</label>
+            <select id="postCategory">
+                <option value="graffiti">Graffiti</option>
+                <option value="fly-tipping">Fly tipping</option>
+                <option value="noise-disturbance">Noise Disturbance</option>
+                <option value="anti-social-behaviour">Anti-Social Behaviour</option>
+                <option value="street-sweeping">Street Sweeping</option>
+                <option value="potholes">Potholes</option>
+                <option value="parking">Parking</option>
+                <option value="damaged-property">Damaged Property</option>
+            </select>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
