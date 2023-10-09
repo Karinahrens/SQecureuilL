@@ -4,10 +4,10 @@ const postsController = require("../controllers/postsController");
 
 const postsRouter = Router();
 
-florinRouter.get("/", postsController.index);
-florinRouter.get("/:id", postsController.show);
-florinRouter.post("/", postsController.create);
-florinRouter.delete("/:id", postsController.destroy);
-florinRouter.patch("/:id", postsController.update);
+postsRouter.get("/", postsController.index);
+postsRouter.get("/:id", postsController.show);
+postsRouter.post("/", postsController.create);
+postsRouter.delete("/:id", postsController.destroy);
+postsRouter.patch("/:id", postsController.update);
 
 module.exports = postsRouter;
