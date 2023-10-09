@@ -17,17 +17,32 @@ class Post {
         return response.rows.map(p => new Post(p));
     }
 
-    static async getOneById(id) {
-        const response = await db.query("SELECT * FROM post WHERE post_id = $1", [id]);
+    static async getByCategory(Category) {
+        const response = await db.query("SELECT * FROM post WHERE post_categories = $1", [Category]);
         if (response.rows.length != 1) {
             throw new Error("Unable to locate post.")
         }
         return new Post(response.rows[0]);
     }
 
+    static async sortByDate() {
+        const response = await db.query("SELECT * FROM post ORDER BY post_date");
+        return new Post(response.rows[0]);
+    }
+
+    static async sortByVotes() {
+        const response = await db.query("SELECT * FROM post ORDER BY post_votes");
+        return new Post(response.rows[0]);
+    }
+
+    static async sortByStatus() {
+        const response = await db.query("SELECT * FROM post ORDER BY post_status");
+        return new Post(response.rows[0]);
+    }
+
     static async create(data) {
         const {post_title, post_content,post_date,post_categories } = data;
-        let response = await db.query("INSERT INTO post ( post_title, post_content, post_date,post_categories) VALUES ($1, $2,$3,$4) RETURNING post_id;", [post_title, post_content,post_date,post_categories]);
+        let response = await db.query("INSERT INTO post ( post_title, post_content, post_date,post_categories) VALUES ($1, $2,$3,$4) RETURNING post_id;", [post_title, post_content,DATE (post_date),post_categories]);
         const newId = response.rows[0].post_id;
         const newPost = await Post.getOneById(newId);
         return newPost;
