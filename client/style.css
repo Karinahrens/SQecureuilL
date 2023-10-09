@@ -1,0 +1,206 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #006D77;
+    margin: 0;
+    padding: 0;
+    height:100vh;
+    overflow: hidden;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;  
+    width: 50%;
+    height: 50%;
+}
+
+.login-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block; 
+}
+
+.btn-group {
+    margin-top: 20px;
+}
+
+.login-btn, .register-btn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+.login-btn {
+    background-color: #007BFF;
+    color: white;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+.register-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.register-btn:hover {
+    background-color: #45a049;
+}
+
+.container {
+    display: flex;
+    margin-top: 50px;
+    height: calc(100vh - 100px);  /* Adjusts for the navbar and margin */
+    overflow-y: auto;             /* Enables vertical scrolling */
+}
+.filter-section {
+    flex: 1;
+    padding: 20px;
+    padding-left: 20px;
+    border-right: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-right: 20px;  
+    height: 250px;               
+    overflow-y: auto;            
+    position: -webkit-sticky;    
+    position: sticky;            
+    top: 60px;  
+    left: 80px;
+    margin-left: 10px;                
+}
+.posts-section {
+    flex: 3;
+    padding: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.post {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 90%;  
+    margin-left: auto;  
+    margin-right: auto; 
+}
+
+.navbar {
+    display: flex;
+    justify-content: center; /* Centers child items horizontally */
+    align-items: center;     /* Centers child items vertically */
+    height: 40px;            /* Assuming you have a fixed height for your navbar, adjust as necessary */
+    background-color: #006d77;
+    color: white;
+}
+
+.navbar h1 {
+    margin: 0;
+
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 1; /* Sit on top */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius:10px;
+}
+
+/* The Close Button */
+.close, .close-create {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover {
+    color: black;
+}
+.create-post-button {
+    text-align: center;
+    margin: 20px 0;
+}
+
+button {
+    background-color: #ffddd2;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #006D77;
+    color: white;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+}
+
+/* For Webkit browsers (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+    width: 10px;   /* Width of the vertical scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;  /* Color of the track (background) of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;   /* Color of the actual scroll 'thumb' */
+    border-radius: 5px;  /* Makes the scroll thumb rounded */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;   /* Color of the scroll 'thumb' when hovered */
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;   /* Can be "none", "thin", or "auto" */
+    scrollbar-color: #888 #f1f1f1;   /* First color is thumb, second is track */
+}
