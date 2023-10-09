@@ -9,7 +9,7 @@ CREATE TABLE post (
     post_content VARCHAR (500) NOT NULL,
     post_date DATE NOT NULL,
     post_categories VARCHAR (100) NOT NULL,
-    post_Status VARCHAR (100) DEFAULT 'Active' NOT NULL, -
+    post_Status VARCHAR (100) DEFAULT 'Active' NOT NULL, 
     post_votes INT DEFAULT 0 NOT NULL,
     PRIMARY KEY (post_id)
     /*FOREIGN KEY (user_id) REFERENCES user_account("user_id")*/
