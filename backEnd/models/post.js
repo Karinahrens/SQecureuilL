@@ -48,6 +48,24 @@ class Post {
         return newPost;
     }
 
+    async voteUpPost(data,id) {
+        const { votes } = data;   
+        const response = await db.query("UPDATE post SET post_votes = $1  WHERE post_id= $2 RETURNING *;",[ votes, id ]);
+        if (response.rows.length != 1) {
+            throw new Error("Unable to update votes.")
+        }
+        return new Snack(response.rows[0]);
+    }
+
+    async updatePost(data,id) {
+        const {post_title, post_content,post_date,post_categories } = data;
+        const response = await db.query("UPDATE post SET post_title= $1, post_content=$2, post_date=$3,post_categories =$4  WHERE post_id= $5 RETURNING *;",[ post_title, post_content,DATE (post_date),post_categories, id ]);
+        if (response.rows.length != 1) {
+            throw new Error("Unable to update Post.")
+        }
+        return new Snack(response.rows[0]);
+    }
+
     async destroy() {
         let response = await db.query("DELETE FROM post WHERE post_id = $1 RETURNING *;", [this.id]);
         return new Post(response.rows[0]);
