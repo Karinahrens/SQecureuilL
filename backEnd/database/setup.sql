@@ -5,9 +5,11 @@ DROP TABLE IF EXISTS user_account;
 CREATE TABLE post (
     post_id INT GENERATED ALWAYS AS IDENTITY,
     user_id INT NOT NULL,
-    title VARCHAR (100) NOT NULL,
-    content VARCHAR (500) NOT NULL,
-    votes INT NOT NULL,
+    post_title VARCHAR (100) NOT NULL,
+    post_content VARCHAR (500) NOT NULL,
+    post_date DATE NOT NULL,
+    post_votes INT NOT NULL,
+    post_categories VARCHAR (100) NOT NULL,
     post_Status VARCHAR (100) NOT NULL,
     PRIMARY KEY (post_id)
     FOREIGN KEY (user_id) REFERENCES user_account("user_id")
