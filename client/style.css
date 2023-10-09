@@ -6,9 +6,11 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #006D77;
     margin: 0;
     padding: 0;
+    height:100vh;
+    overflow: hidden;
 }
 
 .login-container {
@@ -64,17 +66,26 @@ body {
 .container {
     display: flex;
     margin-top: 50px;
+    height: calc(100vh - 100px);  /* Adjusts for the navbar and margin */
+    overflow-y: auto;             /* Enables vertical scrolling */
 }
 .filter-section {
     flex: 1;
     padding: 20px;
+    padding-left: 20px;
     border-right: 1px solid #ddd;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     margin-right: 20px;  
+    height: 250px;               
+    overflow-y: auto;            
+    position: -webkit-sticky;    
+    position: sticky;            
+    top: 60px;  
+    left: 80px;
+    margin-left: 10px;                
 }
-
 .posts-section {
     flex: 3;
     padding: 20px;
@@ -95,17 +106,19 @@ label {
     margin-left: auto;  
     margin-right: auto; 
 }
+
 .navbar {
-    background-color: #333;
+    display: flex;
+    justify-content: center; /* Centers child items horizontally */
+    align-items: center;     /* Centers child items vertically */
+    height: 40px;            /* Assuming you have a fixed height for your navbar, adjust as necessary */
+    background-color: #006d77;
     color: white;
-    padding: 15px 20px;
-    width: 100%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
 }
 
 .navbar h1 {
     margin: 0;
+
 }
 /* The Modal (background) */
 .modal {
@@ -113,7 +126,7 @@ label {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.9);
     z-index: 1; /* Sit on top */
 }
 
@@ -129,7 +142,7 @@ label {
 }
 
 /* The Close Button */
-.close {
+.close, .close-create {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -145,8 +158,8 @@ label {
 }
 
 button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #ffddd2;
+    color: black;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -155,7 +168,8 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #006D77;
+    color: white;
 }
 
 textarea {
@@ -165,4 +179,28 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     display: block;
+}
+
+/* For Webkit browsers (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+    width: 10px;   /* Width of the vertical scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;  /* Color of the track (background) of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;   /* Color of the actual scroll 'thumb' */
+    border-radius: 5px;  /* Makes the scroll thumb rounded */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;   /* Color of the scroll 'thumb' when hovered */
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;   /* Can be "none", "thin", or "auto" */
+    scrollbar-color: #888 #f1f1f1;   /* First color is thumb, second is track */
 }

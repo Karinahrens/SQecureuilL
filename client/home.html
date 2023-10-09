@@ -11,10 +11,9 @@
         <h1>Posts Dashboard</h1>
 
     </nav>
-    <div class="create-post-button">
-        <button id="openPostModalBtn">Create Post</button>
-    </div>
+   
     <div class="container">
+        <div class="sidebar">
         <aside class="filter-section">
             <h2>Filters</h2>
             <label>
@@ -44,12 +43,17 @@
                 <input type="radio" name="sort-order" value="status">
                 Order by Status
             </label>
-
+            <div class="create-post-button">
+                <button id="openPostModalBtn">Create Post</button>
+            </div>
         </aside>
+        </div>
+        <div class="main-content">
 
         <main class="posts-section">
             <!-- Posts will be populated here from the database -->
         </main>
+        </div>
     </div>
     <!-- Modal -->
 <div id="postModal" class="modal">
