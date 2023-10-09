@@ -2,7 +2,7 @@ const db = require('../database/connect');
 
 class Post {
 
-    constructor({ post_id, post_title, post_content, post_date,post_categories,post_Status}) {
+    constructor({ post_id, post_title, post_content, post_date,post_votes,post_categories,post_Status}) {
         this.id = post_id;
         this.title = post_title;
         this.content = post_content;
@@ -17,6 +17,14 @@ class Post {
         return response.rows.map(p => new Post(p));
     }
 
+    static async getOneById(id) {
+        const response = await db.query("SELECT * FROM post WHERE post_id = $1", [id]);
+        if (response.rows.length != 1) {
+            throw new Error("Unable to locate post.")
+        }
+        return new Post(response.rows[0]);
+    }
+
     static async getByCategory(Category) {
         const response = await db.query("SELECT * FROM post WHERE post_categories = $1", [Category]);
         if (response.rows.length != 1) {
@@ -24,7 +32,7 @@ class Post {
         }
         return new Post(response.rows[0]);
     }
-
+    
     static async sortByDate() {
         const response = await db.query("SELECT * FROM post ORDER BY post_date");
         return new Post(response.rows[0]);

@@ -33,5 +33,9 @@ CREATE TABLE token (
 INSERT INTO post
     (post_title, post_content, post_date,post_categories)
 VALUES
-    ('Rubbish', 'Black Bins dumped',DATE '01/01/2023', 'Fly tipping'),
-('Rubbish1', 'Black Bins dumped', DATE '02/01/2023', 'Fly tipping')
+    ('Graffiti on School wall', 'Large Signs sprayed painted',DATE '2023/10/09', 'Graffiti'),
+('Potholes on Main City', 'Potholes in roadways are a frequent complaint, causing vehicle damage and safety hazards for drivers and pedestrians.', DATE '2023/09/28', 'Potholes'),
+    ('Noise Complaints', 'Residents often report excessive noise from neighbors, construction sites, or businesses, leading to disturbances and decreased quality of life.',DATE '2023/06/30', 'Noise disturbance'),
+    ('Traffic Congestion', 'Traffic jams, inadequate road infrastructure, and transportation issues are common frustrations for city dwellers.',DATE '2023/04/09', 'Traffic'),
+    ('Rubbish1', 'Black Bins dumped',DATE '2023/02/27', 'Fly tipping'),
+    ('Rubbish2', 'Black Bins dumped',DATE '2023/05/31', 'Fly tipping')
