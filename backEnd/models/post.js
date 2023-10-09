@@ -30,22 +30,22 @@ class Post {
         if (response.rows.length != 1) {
             throw new Error("Unable to locate post.")
         }
-        return new Post(response.rows[0]);
+        return response.rows.map(p => new Post(p));
     }
     
     static async sortByDate() {
         const response = await db.query("SELECT * FROM post ORDER BY post_date");
-        return new Post(response.rows[0]);
+        return response.rows.map(p => new Post(p));
     }
 
     static async sortByVotes() {
         const response = await db.query("SELECT * FROM post ORDER BY post_votes");
-        return new Post(response.rows[0]);
+        return response.rows.map(p => new Post(p));
     }
 
     static async sortByStatus() {
         const response = await db.query("SELECT * FROM post ORDER BY post_status");
-        return new Post(response.rows[0]);
+        return response.rows.map(p => new Post(p));
     }
 
     static async create(data) {
