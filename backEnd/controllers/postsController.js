@@ -56,6 +56,15 @@ async function show(req, res) {
     }
 }
 
+async function orderBy(req, res) {
+    try {
+    const posts = await Post.getPostsByCategoryAndSort();
+    res.status(200).json(posts);
+    } catch (err) {
+    res.status(500).json({error: err.message})
+    }
+}
+
 async function create(req, res) {
     try {
         const data = req.body;
