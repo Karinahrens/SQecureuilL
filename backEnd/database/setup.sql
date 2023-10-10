@@ -31,11 +31,11 @@ CREATE TABLE token (
 );
 
 INSERT INTO post
-    (post_title, post_content, post_date,post_categories)
+    (post_title, post_content, post_date,post_categories,post_votes)
 VALUES
-    ('Graffiti on School wall', 'Large Signs sprayed painted',DATE '2023/10/09', 'Graffiti'),
-('Potholes on Main City', 'Potholes in roadways are a frequent complaint, causing vehicle damage and safety hazards for drivers and pedestrians.', DATE '2023/09/28', 'Potholes'),
-    ('Noise Complaints', 'Residents often report excessive noise from neighbors, construction sites, or businesses, leading to disturbances and decreased quality of life.',DATE '2023/06/30', 'Noise disturbance'),
-    ('Traffic Congestion', 'Traffic jams, inadequate road infrastructure, and transportation issues are common frustrations for city dwellers.',DATE '2023/04/09', 'Traffic'),
-    ('Rubbish1', 'Black Bins dumped',DATE '2023/02/27', 'Fly tipping'),
-    ('Rubbish2', 'Black Bins dumped',DATE '2023/05/31', 'Fly tipping')
+    ('Graffiti on School wall', 'Large Signs sprayed painted',DATE '2023/10/09', 'Graffiti',19),
+('Potholes on Main City', 'Potholes in roadways are a frequent complaint, causing vehicle damage and safety hazards for drivers and pedestrians.', DATE '2023/09/28', 'Potholes',12),
+    ('Noise Complaints', 'Residents often report excessive noise from neighbors, construction sites, or businesses, leading to disturbances and decreased quality of life.',DATE '2023/06/30', 'Noise disturbance',7),
+    ('Traffic Congestion', 'Traffic jams, inadequate road infrastructure, and transportation issues are common frustrations for city dwellers.',DATE '2023/04/09', 'Traffic',6),
+    ('Rubbish1', 'Black Bins dumped',DATE '2023/02/27', 'Fly tipping',3),
+    ('Rubbish2', 'Black Bins dumped',DATE '2023/05/31', 'Fly tipping',6)

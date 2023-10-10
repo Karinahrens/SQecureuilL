@@ -26,10 +26,7 @@ class Post {
     }
 
     static async getByCategory(Category) {
-        const response = await db.query("SELECT * FROM post WHERE post_categories = $1", [Category]);
-        if (response.rows.length != 1) {
-            throw new Error("Unable to locate post.")
-        }
+        const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1)", [Category]);
         return response.rows.map(p => new Post(p));
     }
     
@@ -50,7 +47,7 @@ class Post {
 
     static async create(data) {
         const {post_title, post_content,post_date,post_categories } = data;
-        let response = await db.query("INSERT INTO post ( post_title, post_content, post_date,post_categories) VALUES ($1, $2,$3,$4) RETURNING post_id;", [post_title, post_content,DATE (post_date),post_categories]);
+        let response = await db.query("INSERT INTO post ( post_title, post_content, post_date,post_categories) VALUES ($1, $2,$3,$4) RETURNING post_id;", [post_title, post_content,post_date,post_categories]);
         const newId = response.rows[0].post_id;
         const newPost = await Post.getOneById(newId);
         return newPost;
@@ -62,16 +59,16 @@ class Post {
         if (response.rows.length != 1) {
             throw new Error("Unable to update votes.")
         }
-        return new Snack(response.rows[0]);
+        return new Post(response.rows[0]);
     }
 
     async updatePost(data,id) {
         const {post_title, post_content,post_date,post_categories } = data;
-        const response = await db.query("UPDATE post SET post_title= $1, post_content=$2, post_date=$3,post_categories =$4  WHERE post_id= $5 RETURNING *;",[ post_title, post_content,DATE (post_date),post_categories, id ]);
+        const response = await db.query("UPDATE post SET post_title= $1, post_content=$2, post_date=$3,post_categories =$4  WHERE post_id= $5 RETURNING *;",[ post_title, post_content,post_date,post_categories, this.id ]);
         if (response.rows.length != 1) {
             throw new Error("Unable to update Post.")
         }
-        return new Snack(response.rows[0]);
+        return new Post(response.rows[0]);
     }
 
     async destroy() {
