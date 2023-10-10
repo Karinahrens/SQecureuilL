@@ -59,6 +59,7 @@ async function show(req, res) {
 async function create(req, res) {
     try {
         const data = req.body;
+        console.log(data)
         const newPost = await Post.create(data);
         res.status(201).json(newPost);
     } catch(err) {
@@ -68,10 +69,11 @@ async function create(req, res) {
 
 async function update(req, res) {
     try {
-        const id = req.params.id;
+        const id = parseInt(req.params.id);
         const data = req.body;
         const post = await Post.getOneById(id);
-        const result = await post.update(data);
+        console.log(post)
+        const result = await post.updatePost(data);
         res.status(200).json(result)
     } catch (err) {
         res.status(404).json({error: err.message})
