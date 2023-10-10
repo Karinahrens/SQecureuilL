@@ -11,7 +11,7 @@ CREATE TABLE user_account (
 
 CREATE TABLE post (
     post_id INT GENERATED ALWAYS AS IDENTITY,
-    /*user_id INT NOT NULL,*/
+    user_id INT DEFAULT 1 NOT NULL,
     post_title VARCHAR (100) NOT NULL,
     post_content VARCHAR (500) NOT NULL,
     post_date DATE NOT NULL,
