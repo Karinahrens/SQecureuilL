@@ -11,9 +11,19 @@ body {
     padding: 0;
     height:100vh;
     overflow: hidden;
+
 }
 
+.center-container {
+    flex: 1; /* Takes up all available vertical space after navbar */
+    display: flex;        
+    justify-content: center;  
+    align-items: center;      
+}
+
+
 .login-container {
+    margin-top: 10%;
     background-color: #fff;
     padding: 20px 30px;
     border-radius: 8px;
@@ -46,21 +56,23 @@ body {
 }
 
 .login-btn {
-    background-color: #007BFF;
+    background-color: #006d77;
     color: white;
 }
 
 .login-btn:hover {
-    background-color: #0056b3;
+    background-color: #ffddd2;
+    color: black;
 }
 
 .register-btn {
-    background-color: #4CAF50;
+    background-color: #006d77;
     color: white;
 }
 
 .register-btn:hover {
-    background-color: #45a049;
+    background-color: #ffddd2;
+    color: black;
 }
 
 .container {
@@ -78,7 +90,7 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     margin-right: 20px;  
-    height: 250px;               
+    height: 270px;               
     overflow-y: auto;            
     position: -webkit-sticky;    
     position: sticky;            
@@ -107,11 +119,13 @@ label {
     margin-right: auto; 
 }
 
+/* Styling for the nav bar */
+
 .navbar {
     display: flex;
     justify-content: center; /* Centers child items horizontally */
     align-items: center;     /* Centers child items vertically */
-    height: 40px;            /* Assuming you have a fixed height for your navbar, adjust as necessary */
+    height: 40px;            
     background-color: #006d77;
     color: white;
 }
@@ -120,10 +134,13 @@ label {
     margin: 0;
 
 }
+
+/* Styling for the pop out modal window */
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
-    position: fixed;
+    position: fixed; /* Fixed Position on the page */
     top: 0; left: 0;
     width: 100%; height: 100%;
     background-color: rgba(0,0,0,0.9);
@@ -180,6 +197,9 @@ textarea {
     border-radius: 5px;
     display: block;
 }
+
+
+/* Styling for the scroll bar on the side of page */
 
 /* For Webkit browsers (Chrome, Safari, etc.) */
 ::-webkit-scrollbar {
