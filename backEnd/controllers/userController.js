@@ -27,7 +27,7 @@ async function login (req, res) {
         const user = await User.getOneByUsername(data.username);
         console.log("User", user)
         const authenticated = await bcrypt.compare(data.password, user["password"]);
-        console.log("Authentificated", authenticated)
+        console.log("Authenticated", authenticated)
         if (!authenticated) {
             throw new Error("Incorrect credentials.");
         } else {
