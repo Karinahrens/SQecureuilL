@@ -2,9 +2,16 @@ DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS token;
 DROP TABLE IF EXISTS user_account;
 
+CREATE TABLE user_account (
+    user_id INT GENERATED ALWAYS AS IDENTITY,
+    username VARCHAR(30) UNIQUE NOT NULL,
+    password CHAR(60) NOT NULL,
+    PRIMARY KEY (user_id)
+);
+
 CREATE TABLE post (
     post_id INT GENERATED ALWAYS AS IDENTITY,
-    /*user_id INT NOT NULL,*/
+    user_id INT DEFAULT 1 NOT NULL,
     post_title VARCHAR (100) NOT NULL,
     post_content VARCHAR (500) NOT NULL,
     post_date DATE NOT NULL,
@@ -13,13 +20,6 @@ CREATE TABLE post (
     post_votes INT DEFAULT 0 NOT NULL,
     PRIMARY KEY (post_id)
     /*FOREIGN KEY (user_id) REFERENCES user_account("user_id")*/
-);
-
-CREATE TABLE user_account (
-    user_id INT GENERATED ALWAYS AS IDENTITY,
-    username VARCHAR(30) UNIQUE NOT NULL,
-    password CHAR(60) NOT NULL,
-    PRIMARY KEY (user_id)
 );
 
 CREATE TABLE token (
