@@ -37,5 +37,13 @@ VALUES
 ('Potholes on Main City', 'Potholes in roadways are a frequent complaint, causing vehicle damage and safety hazards for drivers and pedestrians.', DATE '2023/09/28', 'Potholes',12),
     ('Noise Complaints', 'Residents often report excessive noise from neighbors, construction sites, or businesses, leading to disturbances and decreased quality of life.',DATE '2023/06/30', 'Noise disturbance',7),
     ('Traffic Congestion', 'Traffic jams, inadequate road infrastructure, and transportation issues are common frustrations for city dwellers.',DATE '2023/04/09', 'Traffic',6),
-    ('Rubbish1', 'Black Bins dumped',DATE '2023/02/27', 'Fly tipping',3),
-    ('Rubbish2', 'Black Bins dumped',DATE '2023/05/31', 'Fly tipping',6)
+    ('Rubbish2', 'Black Bins dumped',DATE '2023/02/27', 'Fly tipping',3),
+    ('Graffiti on School wall', 'Large Signs sprayed painted',DATE '2023/10/09', 'Streets not swept',19),
+    ('Massive pothole', 'Massive pothole on main street',DATE '2022/02/27', 'Potholes',20),
+    ('Rubbish3', 'Black Bins dumped',DATE '2023/02/27', 'Fly tipping',3),
+    ('Black bins dumped everywhere', 'Black bins are dumped on the highroad for the last week',DATE '2023/03/21', 'Streets not swept',12),
+    ('Kids playing loud music outside', 'Saw a bunch of kids playing loud music outside',DATE '2023/02/09', 'Anti-social behaviour',1),
+    ('Kids smoking', 'Saw several kids smoking outside the corner shop',DATE '2022/01/09', 'Anti-social behaviour',2),
+    ('Bins are overflowing', 'The public bin on main street has not been cleared for the last two days',DATE '2021/02/09', 'Streets not swept',12),
+    ('Rubbish3', 'Black Bins dumped',DATE '2023/02/27', 'Fly tipping',3),
+    ('Rubbish4', 'Black Bins dumped',DATE '2023/05/31', 'Fly tipping',6)
