@@ -5,5 +5,6 @@
         "Maplewood",
         "Neighbours",
         "Willowbrook"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }
