@@ -1,4 +1,4 @@
-const Post = require('../models/Post');
+const Post = require('../models/Posts');
 
 async function index(req, res) {
     try {
@@ -58,10 +58,14 @@ async function show(req, res) {
 
 async function orderBy(req, res) {
     try {
-    const posts = await Post.getPostsByCategoryAndSort();
-    res.status(200).json(posts);
+        const category = req.query.category;
+        const sort = req.query.sort;
+        
+        const posts = await Post.getPostsByCategoryAndSort(category, sort);
+        
+        res.status(200).json(posts);
     } catch (err) {
-    res.status(500).json({error: err.message})
+        res.status(500).json({ error: err.message });
     }
 }
 
