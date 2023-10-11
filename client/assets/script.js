@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
         if (category !== 'all') {
             endpoint = `${API_ENDPOINT}posts/order?category=${category}&sort=${sortOrder}`;
+
         } else {
             endpoint = `${API_ENDPOINT}posts/${sortOrder}`
         }
@@ -112,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function() {
         createPostModal.style.display = "none";
     };
 });
-
 
 createPostForm.addEventListener("submit", function (event) {
     event.preventDefault();
