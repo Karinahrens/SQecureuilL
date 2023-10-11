@@ -12,7 +12,7 @@ app.use(cors());
 app.use(logger('dev'))
 
 app.use("/posts", postsRouter);
-app.use("/users", userRouter);
+//app.use("/users", userRouter);
 
 app.get("/", (req, res) => {
   res.json({
