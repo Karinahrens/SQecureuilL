@@ -31,7 +31,7 @@ class Post {
     }
     
     static async sortByDate() {
-        const response = await db.query("SELECT * FROM post ORDER BY post_date");
+        const response = await db.query("SELECT * FROM post ORDER BY post_date DESC");
         return response.rows.map(p => new Post(p));
     }
 
