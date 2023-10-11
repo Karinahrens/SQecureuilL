@@ -19,6 +19,36 @@ async function indexCategory(req, res) {
     }
 }
 
+async function indexCategoryDate(req, res) {
+    const id = req.params.id;
+    try {
+        const posts = await Post.getByCategoryDate(id);
+        res.status(200).json(posts);
+    } catch (err) {
+        res.status(500).json({error: err.message})
+    }
+}
+
+async function indexCategoryVote(req, res) {
+    const id = req.params.id;
+    try {
+        const posts = await Post.getByCategoryVote(id);
+        res.status(200).json(posts);
+    } catch (err) {
+        res.status(500).json({error: err.message})
+    }
+}
+
+async function indexCategoryStatus(req, res) {
+    const id = req.params.id;
+    try {
+        const posts = await Post.getByCategoryStatus(id);
+        res.status(200).json(posts);
+    } catch (err) {
+        res.status(500).json({error: err.message})
+    }
+}
+
 async function indexDate(req, res) {
     try {
         const posts = await Post.sortByDate();
@@ -104,4 +134,4 @@ async function destroy(req, res) {
     }
 }
 
-module.exports = { index,indexCategory, indexDate ,indexVote,indexStatus,show,orderBy, create, update, destroy }
+module.exports = { index,indexCategory,indexCategoryDate, indexCategoryVote,indexCategoryStatus,indexDate ,indexVote,indexStatus,show,orderBy, create, update, destroy }
