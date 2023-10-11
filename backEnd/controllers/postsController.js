@@ -123,6 +123,19 @@ async function update(req, res) {
     }
 }
 
+async function upVote(req, res) {
+    try {
+        const id = parseInt(req.params.id);
+        const data = req.body;
+        const post = await Post.getOneById(id);
+        console.log(post)
+        const result = await post.updateVote(data);
+        res.status(200).json(result)
+    } catch (err) {
+        res.status(404).json({error: err.message})
+    }
+}
+
 async function destroy(req, res) {
     try {
         const id = req.params.id;
@@ -134,4 +147,4 @@ async function destroy(req, res) {
     }
 }
 
-module.exports = { index,indexCategory,indexCategoryDate, indexCategoryVote,indexCategoryStatus,indexDate ,indexVote,indexStatus,show,orderBy, create, update, destroy }
+module.exports = { index,indexCategory,indexCategoryDate, indexCategoryVote,indexCategoryStatus,indexDate ,indexVote,indexStatus,show,orderBy, create, update, upVote ,destroy }
