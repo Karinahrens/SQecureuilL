@@ -1,5 +1,5 @@
-const API_ENDPOINT = 'https://backendsqecureuill.onrender.com/';
-
+//const API_ENDPOINT = 'https://backendsqecureuill.onrender.com/';
+const API_ENDPOINT= 'http://localhost:3000/'
 function performLogin() {
     alert("You've successfully logged in!")
 }
@@ -111,3 +111,9 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 });
 
+document.getElementById('logout').addEventListener('click', () => {
+    //localStorage.removeItem('token');
+    
+    localStorage.clear(); 
+    window.location.assign('./login.html')
+})
