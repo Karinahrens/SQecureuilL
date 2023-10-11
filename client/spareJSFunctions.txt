@@ -80,3 +80,56 @@ const fakePosts = [
         votes: 11
     }
 ];
+
+
+<routers>
+postsRouter.get("/order", postsController.orderBy);
+<model>
+static async getPostsByCategoryAndSort(Category, sortCriteria) {
+        let orderByClause;
+        switch (sortCriteria) {
+            case "date":
+                orderByClause = "ORDER BY post_date";
+                break;
+            case "votes":
+                orderByClause = "ORDER BY post_votes DESC";
+                break;
+            case "status":
+                orderByClause = "ORDER BY post_status";
+                break;
+            default:
+                orderByClause = ""; // default behavior if no valid sortCriteria is passed
+        }
+        const queryStr = `SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ${orderByClause}`;
+        const response = await db.query(queryStr, [Category]);
+        return response.rows.map(p => new Post(p));
+    }
+    <controller>
+async function orderBy(req, res) {
+    try {
+        const category = req.query.category;
+        const sort = req.query.sort;
+        
+        const posts = await Post.getPostsByCategoryAndSort(category, sort);
+        
+        res.status(200).json(posts);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+}
+
+<script>
+function applyFilter() {
+        const category = categoryFilter.value;
+        const sortOrder = document.querySelector('[name="sort-order"]:checked').value;
+    
+        let endpoint = `${API_ENDPOINT}posts`; // default
+    
+        if (category !== 'all') {
+            endpoint = `${API_ENDPOINT}posts/order?category=${category}&sort=${sortOrder}`;
+        } else {
+            endpoint = `${API_ENDPOINT}posts/${sortOrder}`
+        }
+    
+        fetchAndDisplay(endpoint);
+    }
