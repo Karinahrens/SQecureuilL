@@ -100,4 +100,4 @@ async function destroy(req, res) {
     }
 }
 
-module.exports = { index,indexCategory, indexDate ,indexVote,indexStatus,show, create, update, destroy }
+module.exports = { index,indexCategory, indexDate ,indexVote,indexStatus,show,orderBy, create, update, destroy }
