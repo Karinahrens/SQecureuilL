@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
         if (category !== 'all') {
             endpoint = `${API_ENDPOINT}posts/order?category=${category}&sort=${sortOrder}`;
+        } else {
+            endpoint = `${API_ENDPOINT}posts/${sortOrder}`
         }
     
         fetchAndDisplay(endpoint);
@@ -111,3 +113,63 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 });
 
+
+createPostForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const title = document.getElementById("postTitle").value;
+    const content = document.getElementById("postContent").value;
+    const category = document.getElementById("postCategory").value;
+
+    const currentDate = new Date();
+    const dateOptions = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+    };
+    const localDateTime = currentDate.toLocaleString("en-GB", dateOptions);
+
+    const postData = {
+        post_title: title,
+        post_content: content,
+        post_date: localDateTime,
+        post_categories: category,
+        votes: 0,
+        Status: 'Active'
+    };
+
+    fetch(`${API_ENDPOINT}posts`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+    })
+        .then(response => {
+            if (!response.ok) {
+                console.error(`HTTP error! Status: ${response.status}`);
+                return response.text(); 
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data) {
+                console.log("Server response:", data);
+                createPostModal.style.display = "none";
+
+                posts.push(data);
+                displayPosts(posts);
+
+                document.getElementById("postTitle").value = "";
+                document.getElementById("postContent").value = "";
+                document.getElementById("postCategory").value = "Graffiti";
+            }
+        })
+        .catch(error => {
+            console.error("Error posting data to the server:", error);
+        });
+});
