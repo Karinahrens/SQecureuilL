@@ -11,8 +11,8 @@
       .box {
           width: 150px;
           height: 150px;
-          background-color: #b1c7c9;
-          color: #fff;
+          background-color: #0b545b;
+          color: #218942;
           text-align: center;
           line-height: 150px;
           margin: 10px;
@@ -21,7 +21,7 @@
       }
       /* Style for links inside the boxes */
       .box a {
-          color: #fff;
+          color: #e0caca;
           text-decoration: none;
           display: block;
       }
@@ -29,19 +29,32 @@
 </head>
 <body>
 
-    <div class="topnav">
-        <a href="home.html">Welcome</a>
-        <a href="categories.html">Report a problem</a>
+  <nav class="navbar">
+    <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
+            <a href="categories.html">Categories</a>
+            <a href="antisocialbehaviour.html">Anti-Social Behaviour</a>
+            <a href="damagedproperty.html">Damaged Property</a>
+            <a href="flytipping.html">Fly Tipping</a>
+            <a href="graffiti.html">Graffiti</a>
+            <a href="illegalparking.html">Illegal Parking</a>
+            <a href="noisedisturbance.html">Noise Disturbances</a>
+            <a href="potholes.html">Potholes</a>
+            <a href="streetsnotswept.html">Street Sweeping</a>
+        </div>
     </div>
 
-   
-      <div class="box">
-          <a href="antisocialbehaviour.html">Anti-Social Behaviour</a>
-      </div>
+    <h1><a href="/client/home.html">Posts Dashboard</a></h1>
+    <button class="logout-btn">Logout</button>
 
+</nav>
+
+      <div class="box">
+          <a href="antisocialbehaviour.html">AntiSocial Behaviour</a>
+      </div>
       <div class="box">
           <a href="damagedproperty.html">Damaged Property</a>
-
       </div>
       <div class="box">
           <a href="flytipping.html">Fly-tipping</a>

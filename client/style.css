@@ -272,6 +272,7 @@ textarea {
 .dropdown {
     position: relative;
     display: inline-block;
+    margin-left: 20px;
 }
 
 .dropdown-content {
