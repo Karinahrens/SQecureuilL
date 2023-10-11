@@ -1,4 +1,4 @@
-const API_ENDPOINT = 'http://localhost:3000/';
+const API_ENDPOINT = 'https://backendsqecureuill.onrender.com/';
 
 function performLogin() {
     alert("You've successfully logged in!")
