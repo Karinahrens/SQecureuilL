@@ -9,10 +9,14 @@ function showRegistration() {
 }
 
 let posts = []; 
+
 let currentPostIndex; 
 
 document.addEventListener("DOMContentLoaded", function() {
     const postsSection = document.querySelector('.posts-section');
+
+    const filters = document.querySelectorAll('[name="sort-order"]');
+
     const categoryFilter = document.querySelector('#category-filter');
 
     function fetchAndDisplay(endpoint) {
@@ -64,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <p>Category: ${post.categories}</p>
                 <p>Date: ${new Date(post.date).toLocaleDateString()}</p>
                 <p>Votes: ${post.votes}</p>
+
             </div>`;
         });
         postsSection.innerHTML = postsHTML;
@@ -113,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
         createPostModal.style.display = "none";
     };
 });
+
 
 createPostForm.addEventListener("submit", function (event) {
     event.preventDefault();
