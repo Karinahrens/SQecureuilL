@@ -29,6 +29,21 @@ class Post {
         const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1)", [Category]);
         return response.rows.map(p => new Post(p));
     }
+
+    static async getByCategoryDate(Category) {
+        const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ORDER BY post_date DESC", [Category]);
+        return response.rows.map(p => new Post(p));
+    }
+
+    static async getByCategoryVote(Category) {
+        const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ORDER BY post_votes DESC", [Category]);
+        return response.rows.map(p => new Post(p));
+    }
+
+    static async getByCategoryStatus(Category) {
+        const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ORDER BY post_status", [Category]);
+        return response.rows.map(p => new Post(p));
+    }
     
     static async sortByDate() {
         const response = await db.query("SELECT * FROM post ORDER BY post_date DESC");
