@@ -93,7 +93,7 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     margin-right: 20px;  
-    height: 270px;               
+    height: 300px;               
     overflow-y: auto;            
     position: -webkit-sticky;    
     position: sticky;            
@@ -272,6 +272,7 @@ textarea {
 .dropdown {
     position: relative;
     display: inline-block;
+    margin-left: 20px;
 }
 
 .dropdown-content {

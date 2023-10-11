@@ -29,21 +29,6 @@ class Post {
         const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1)", [Category]);
         return response.rows.map(p => new Post(p));
     }
-
-    static async getByCategoryDate(Category) {
-        const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ORDER BY post_date DESC", [Category]);
-        return response.rows.map(p => new Post(p));
-    }
-
-    static async getByCategoryVote(Category) {
-        const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ORDER BY post_votes DESC", [Category]);
-        return response.rows.map(p => new Post(p));
-    }
-
-    static async getByCategoryStatus(Category) {
-        const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ORDER BY post_status", [Category]);
-        return response.rows.map(p => new Post(p));
-    }
     
     static async sortByDate() {
         const response = await db.query("SELECT * FROM post ORDER BY post_date DESC");
@@ -60,7 +45,8 @@ class Post {
         return response.rows.map(p => new Post(p));
     }
 
-    static async getPostsByCategoryAndSort(Category, sortCriteria) {let orderByClause;
+    static async getPostsByCategoryAndSort(Category, sortCriteria) {
+        let orderByClause;
         switch (sortCriteria) {
             case "date":
                 orderByClause = "ORDER BY post_date";
@@ -74,9 +60,10 @@ class Post {
             default:
                 orderByClause = ""; // default behavior if no valid sortCriteria is passed
         }
-        const queryStr = `SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ${orderByClause}`; const response = await db.query(queryStr, [Category]); return response.rows.map(p => new Post(p));
+        const queryStr = `SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ${orderByClause}`;
+        const response = await db.query(queryStr, [Category]);
+        return response.rows.map(p => new Post(p));
     }
-    
     static async create(data) {
         const {post_title, post_content,post_date,post_categories } = data;
         let response = await db.query("INSERT INTO post ( post_title, post_content, post_date,post_categories) VALUES ($1, $2,$3,$4) RETURNING post_id;", [post_title, post_content,post_date,post_categories]);

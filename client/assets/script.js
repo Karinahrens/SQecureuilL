@@ -8,12 +8,15 @@ function showRegistration() {
     alert("Redirecting to registration page...")
 }
 
-let posts = []; // Moved outside of DOMContentLoaded for broader scope
+let posts = []; 
+
 let currentPostIndex; 
 
 document.addEventListener("DOMContentLoaded", function() {
     const postsSection = document.querySelector('.posts-section');
+
     const filters = document.querySelectorAll('[name="sort-order"]');
+
     const categoryFilter = document.querySelector('#category-filter');
 
     function fetchAndDisplay(endpoint) {
@@ -34,111 +37,26 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 
-    createPostForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-    
-        const title = document.getElementById("postTitle").value;
-        const content = document.getElementById("postContent").value;
-        const category = document.getElementById("postCategory").value;
-    
-        const currentDate = new Date();
-        const dateOptions = {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            hour12: false,
-        };
-        const localDateTime = currentDate.toLocaleString("en-GB", dateOptions);
-    
-        const postData = {
-            post_title: title,
-            post_content: content,
-            post_date: localDateTime,
-            post_categories: category,
-            votes: 0,
-            Status: 'Active'
-        };
-    
-        fetch(`${API_ENDPOINT}posts`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(postData),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    console.error(`HTTP error! Status: ${response.status}`);
-                    return response.text(); 
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data) {
-                    console.log("Server response:", data);
-                    createPostModal.style.display = "none";
-    
-                    posts.push(data);
-                    displayPosts(posts);
-    
-                    document.getElementById("postTitle").value = "";
-                    document.getElementById("postContent").value = "";
-                    document.getElementById("postCategory").value = "Graffiti";
-                }
-            })
-            .catch(error => {
-                console.error("Error posting data to the server:", error);
-            });
-    });
+    document.getElementById("filterButton").addEventListener('click', applyFilter);
 
     function applyFilter() {
         const category = categoryFilter.value;
-        console.log("Category:", category);
-    
         const sortOrder = document.querySelector('[name="sort-order"]:checked').value;
-        let endpoint = `${API_ENDPOINT}posts`;
+    
+        let endpoint = `${API_ENDPOINT}posts`; // default
     
         if (category !== 'all') {
-            endpoint = `${API_ENDPOINT}posts/category/${category}`;
+            endpoint = `${API_ENDPOINT}posts/order?category=${category}&sort=${sortOrder}`;
+
+        } else {
+            endpoint = `${API_ENDPOINT}posts/${sortOrder}`
         }
-        
-        // Fetch data based on category filter first
-        fetch(endpoint)
-            .then(response => response.json())
-            .then(data => {
-                posts = data;
     
-                // Then apply sort order on the fetched data
-                switch (sortOrder) {
-                    case "date":
-                        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-                        break;
-                    case "votes":
-                        posts.sort((a, b) => b.votes - a.votes);
-                        break;
-                    case "status":
-                        posts.sort((a, b) => a.completionStatus.localeCompare(b.completionStatus));
-                        break;
-                }
-    
-                displayPosts(posts);
-            })
-            .catch(error => {
-                console.log("Error fetching posts: ", error);
-            });
+        fetchAndDisplay(endpoint);
     }
-    
+
     // Initial fetch and display
     fetchAndDisplay(`${API_ENDPOINT}posts`);
-
-    filters.forEach(filter => {
-        filter.addEventListener('change', applyFilter);
-    });
-
-    categoryFilter.addEventListener('change', applyFilter);
 
     function displayPosts(postsToDisplay) {
         let postsHTML = "";
@@ -199,4 +117,65 @@ document.addEventListener("DOMContentLoaded", function() {
     closeCreate.onclick = function() {
         createPostModal.style.display = "none";
     };
+});
+
+
+createPostForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const title = document.getElementById("postTitle").value;
+    const content = document.getElementById("postContent").value;
+    const category = document.getElementById("postCategory").value;
+
+    const currentDate = new Date();
+    const dateOptions = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+    };
+    const localDateTime = currentDate.toLocaleString("en-GB", dateOptions);
+
+    const postData = {
+        post_title: title,
+        post_content: content,
+        post_date: localDateTime,
+        post_categories: category,
+        votes: 0,
+        Status: 'Active'
+    };
+
+    fetch(`${API_ENDPOINT}posts`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+    })
+        .then(response => {
+            if (!response.ok) {
+                console.error(`HTTP error! Status: ${response.status}`);
+                return response.text(); 
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data) {
+                console.log("Server response:", data);
+                createPostModal.style.display = "none";
+
+                posts.push(data);
+                displayPosts(posts);
+
+                document.getElementById("postTitle").value = "";
+                document.getElementById("postContent").value = "";
+                document.getElementById("postCategory").value = "Graffiti";
+            }
+        })
+        .catch(error => {
+            console.error("Error posting data to the server:", error);
+        });
 });
