@@ -13,6 +13,7 @@ let posts = [];
 
 let currentPostIndex; 
 
+
 document.addEventListener("DOMContentLoaded", function() {
     const postsSection = document.querySelector('.posts-section');
 
@@ -232,6 +233,31 @@ createPostForm.addEventListener("submit", function (event) {
         });
 });
 
+
+const deleteButton = document.getElementById("deleteBtn");
+
+deleteButton.addEventListener("click", () => {
+    console.log("Delete button clicked");
+    console.log("currentPostIndex:", currentPostIndex);
+   
+    if (typeof currentPostIndex !== 'undefined') {
+        const postIdToDelete = posts[currentPostIndex].post_id; 
+        fetch(`${API_ENDPOINT}posts/${postIdToDelete}`, {
+            method: "DELETE",
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            
+            alert("Post deleted successfully!");
+            window.location.href = "/client/home.html";
+        })
+        .catch(error => {
+            console.error("Error deleting the post:", error);
+        });
+    }
+});
 document.getElementById('logout').addEventListener('click', () => {
     //localStorage.removeItem('token');
     
