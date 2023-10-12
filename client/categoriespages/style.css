@@ -5,6 +5,7 @@ body {
     height:100vh;
     text-align: justify;
     text-justify: inter-word;
+    font-family: Arial, sans-serif;
 }
 
 /* .main-container {
@@ -70,28 +71,27 @@ body {
     
         /* CSS styles for the white box */
 
-        #appText {
-            background-color: white;
-            padding: 20px;
-            width: 80%;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            font-family: 'Garamond', serif ;
-            margin: 20px auto;
-            padding: 20px;
-        }
-        body {
-            background-color: #B1C7C9;
-            margin: 0;
-            padding: 0;
-            height:100vh;
-            text-align: justify;
-            text-justify: inter-word;
-        }
+#appText {
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    padding: 20px;
+}
+body {
+    background-color: #B1C7C9;
+    margin: 0;
+    padding: 0;
+    height:100vh;
+    text-align: justify;
+    text-justify: inter-word;
+}
 
-        #appText h1,
+#appText h1,
 #appText h3 {
-
     text-align: center;
 }
 
@@ -137,6 +137,7 @@ p {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+        font-family: Arial, sans-serif;
 }
 
 .dropdown-content a {
@@ -190,3 +191,4 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
