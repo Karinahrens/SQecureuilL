@@ -275,7 +275,7 @@ async function loadPosts () {
     }
     const response = await fetch(`${API_ENDPOINT}/posts`, options);
     //console.log(options.headers.Authorization)
-    if (options.headers.Authorization) {alert("You've successfully logged in!")}
+    if (options.headers.Authorization) (console.log("You've successfully logged in!"))
     else {
         window.location.assign("./login.html");
     }
