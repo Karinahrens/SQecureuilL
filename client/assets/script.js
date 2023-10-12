@@ -1,21 +1,15 @@
 const API_ENDPOINT = 'https://backendsqecureuill.onrender.com/';
-
-
 let posts = [];
 let currentPostIndex;
-
-
 function performLogin() {
     alert("You've successfully logged in!");
 }
 function showRegistration() {
     alert("Redirecting to registration page...");
 }
-
 function getPostClassByCategory(category) {
     return category.toLowerCase().replace(/ /g, '-');
 }
-
 function displayPosts(postsToDisplay) {
     const postsSection = document.querySelector('.posts-section');
     let postsHTML = "";
@@ -31,12 +25,10 @@ function displayPosts(postsToDisplay) {
     });
     postsSection.innerHTML = postsHTML;
 }
-
 document.addEventListener("DOMContentLoaded", function() {
     const postsSection = document.querySelector('.posts-section');
     const categoryFilter = document.querySelector('#category-filter');
     const createPostForm = document.getElementById("createPostForm");
-
     function fetchAndDisplay(endpoint) {
         console.log("Fetching from:", endpoint);
         fetch(endpoint)
@@ -52,29 +44,27 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("filterButton").addEventListener('click', applyFilter);
     function applyFilter() {
         const category = categoryFilter.value;
-        const sortOrder = document.querySelector('[name="sort-order"]:checked').value;
-
-
-        let endpoint = `${API_ENDPOINT}posts`; 
-
-
+        let sortOrder = document.querySelector('[name="sort-order"]:checked').value;
+        
+        // Adjust the sortOrder value based on the category selection
+        if (category !== 'all' && sortOrder === "vote") {
+            sortOrder = "votes";
+        }
+    
+        let endpoint = `${API_ENDPOINT}posts`;
+        
         if (category !== 'all') {
             endpoint = `${API_ENDPOINT}posts/order?category=${category}&sort=${sortOrder}`;
         } else {
             endpoint = `${API_ENDPOINT}posts/${sortOrder}`;
         }
-
-
+    
         fetchAndDisplay(endpoint);
     }
-
+    
     fetchAndDisplay(`${API_ENDPOINT}posts`);
-
     const modal = document.getElementById("postModal");
     const closeModal = document.querySelector(".close");
-    const closeCreate = document.querySelector(".close-create");
-
-
     postsSection.addEventListener('click', function(e) {
         const postElement = e.target.closest('.post');
         if (postElement) {
@@ -88,12 +78,6 @@ document.addEventListener("DOMContentLoaded", function() {
     openPostModalBtn.addEventListener("click", function() {
         createPostModal.style.display = "block";
     });
-
-    
-    closeCreate.onclick = function() {
-        createPostModal.style.display = "none";
-    };
-
     closeModal.onclick = () => {
         modal.style.display = "none";
     };
@@ -161,22 +145,11 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     });
-
-
-    createPostForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-    
-        const title = document.getElementById("postTitle").value;
-        const content = document.getElementById("postContent").value;
-        const category = document.getElementById("postCategory").value;
-    
-
     createPostForm.addEventListener("submit", function (event) {
         event.preventDefault();
         const title = document.getElementById("postTitle").value;
         const content = document.getElementById("postContent").value;
         const category = document.getElementById("postCategory").value;
-
         const currentDate = new Date();
         const dateOptions = {
             year: "numeric",
@@ -188,7 +161,6 @@ document.addEventListener("DOMContentLoaded", function() {
             hour12: false,
         };
         const localDateTime = currentDate.toLocaleString("en-GB", dateOptions);
-
         const postData = {
             post_title: title,
             post_content: content,
@@ -197,7 +169,6 @@ document.addEventListener("DOMContentLoaded", function() {
             post_votes: 0,
             post_stage: 'Active'
         };
-
         fetch(`${API_ENDPOINT}posts`, {
             method: "POST",
             headers: {
@@ -208,9 +179,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => {
                 if (!response.ok) {
                     console.error(`HTTP error! Status: ${response.status}`);
-
-                    return response.text(); 
-
+                    return response.text();
                 }
                 return response.json();
             })
@@ -218,12 +187,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (data) {
                     console.log("Server response:", data);
                     createPostModal.style.display = "none";
-
-    
                     posts.push(data);
                     displayPosts(posts);
-    
-
                     document.getElementById("postTitle").value = "";
                     document.getElementById("postContent").value = "";
                     document.getElementById("postCategory").value;
@@ -246,7 +211,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (!response.ok) {
                         throw new Error(`HTTP error! Status: ${response.status}`);
                     }
-
                     alert("Post deleted successfully!");
                     window.location.href = "/client/home.html";
                 })
@@ -255,12 +219,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
         }
     });
-
     document.getElementById('logout').addEventListener('click', () => {
         localStorage.clear();
         window.location.assign('./login.html');
     });
-
     async function loadPosts() {
         const options = {
             headers: {
@@ -272,6 +234,5 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.assign("./login.html");
         }
     }
-
     loadPosts();
 });
