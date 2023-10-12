@@ -1,0 +1,26 @@
+{
+  "name": "project-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "live-server",
+    "test": "jest --watchAll",
+    "coverage": "jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-fetch-mock": "^3.0.3",
+    "jsdom": "^22.1.0",
+    "live-server": "^1.2.2",
+    "node-fetch": "^3.3.2"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/__tests__/helpers.js"
+    ]
+  }
+}
