@@ -1,4 +1,4 @@
-const API_ENDPOINT = 'http://localhost:3000/users/login' //'https://backendsqecureuill.onrender.com/';
+const API_ENDPOINT = 'https://backendsqecureuill.onrender.com/';
 
 document.getElementById("login-form").addEventListener("submit", async (e) => {
     e.preventDefault();

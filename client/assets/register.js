@@ -1,4 +1,4 @@
-const API_ENDPOINT = 'http://localhost:3000/users/register' //'https://backendsqecureuill.onrender.com/';
+const API_ENDPOINT = 'https://backendsqecureuill.onrender.com/';
 
 document.getElementById("register-form").addEventListener("submit", async (e) => {
     e.preventDefault();
