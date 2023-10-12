@@ -15,13 +15,16 @@
     </nav>
     <hr />
     <main>
-        <div class="center-container">
-            <div class="login-container">
-        <h1>Create an Account</h1>
         <form id="register-form">
-        <input type="text" class="login-input" id="username" placeholder="Username">
-        <input type="password" class="login-input" id="password" placeholder="Password">
-            <input type="submit" value="Log in">
+            <fieldset>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+            </fieldset>
+            <fieldset>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </fieldset>
+            <input type="submit" value="Register">
         </form>
         <p>Already registered? <a href="./login.html">Log in here</a>.</p>
         </div>
