@@ -375,3 +375,25 @@ textarea {
     border-radius: 4px; /* slightly rounded corners */
     box-sizing: border-box; /* border is included in total width/height */
 }
+
+.graffiti {
+    background-color: black;
+}
+.fly-tipping {
+    background-color: #faedcb;
+}
+.noise-disturbance {
+    background-color: #c9e4de;
+}
+.anti-social-behaviour {
+    background-color: #c6def1;
+}
+.parking {
+    background-color: #dbcdf0;
+}
+.damaged-property {
+    background-color: #f2c6de;
+}
+.street-sweeping {
+    background-color: #f7d9c4;
+}

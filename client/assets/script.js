@@ -58,13 +58,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Initial fetch and display
     fetchAndDisplay(`${API_ENDPOINT}posts`);
-
+    function getPostClassByCategory(category) {
+        switch (category) {
+            case 'graffiti':
+                return 'graffiti';
+            case 'Fly Tipping':
+                return 'fly-tipping';
+            case 'Noise Disturbance':
+                return 'noise-disturbance';
+            case 'anti-social-behaviour':
+                return 'anti-social-behaviour';
+            case 'Parking':
+                return 'parking';
+            case 'Damaged Property':
+                return 'damaged-property';
+            case 'Street Sweeping':
+                return 'street-sweeping';
+        }
+    }
     function displayPosts(postsToDisplay) {
         let postsHTML = "";
         postsToDisplay.forEach(post => {
-            postsHTML += `<div class="post" data-post-id="${post.id}">
+            const postClass = getPostClassByCategory(post.categories)
+            postsHTML += `<div class="post ${postClass}" data-post-id="${post.id}">
                 <h3>${post.title}</h3>
-                <h4>${post.stage}</h4>
                 <p>${post.content}</p>
                 <p>Category: ${post.categories}</p>
                 <p>Date: ${new Date(post.date).toLocaleDateString()}</p>
