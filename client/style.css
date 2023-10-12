@@ -210,7 +210,20 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
+.button-style {
+    background-color: #ffddd2;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+.button-style:hover {
+    background-color: #006D77;
+    color: white;
+}
 button:hover {
     background-color: #006D77;
     color: white;
@@ -423,3 +436,25 @@ textarea {
     transition: background-color 0.3s;
     border-radius: 5px;  /* Optional, but adds a nice rounded corner to the buttons */
 }
+=========
+
+
+#appText {
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Garamond', serif ;
+    margin: 20px auto;
+    padding: 20px;
+}
+body {
+    background-color: #B1C7C9;
+    margin: 0;
+    padding: 0;
+    height:100vh;
+    text-align: justify;
+    text-justify: inter-word;
+}
+>>>>>>>>> Temporary merge branch 2
