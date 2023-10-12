@@ -397,16 +397,23 @@ textarea {
 .street-sweeping {
     background-color: #f7d9c4;
 }
-/* .appText {
-    /* background-color:#b1c7c9;
+
+
+#appText {
+    background-color: white;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-    /* width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: block;
-} */ 
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Garamond', serif ;
+    margin: 20px auto;
+    padding: 20px;
+}
+body {
+    background-color: #B1C7C9;
+    margin: 0;
+    padding: 0;
+    height:100vh;
+    text-align: justify;
+    text-justify: inter-word;
+}

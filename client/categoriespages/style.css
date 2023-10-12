@@ -51,12 +51,22 @@
     
         /* CSS styles for the white box */
         #appText {
-            background-color: #b1c7c9;
+            background-color: white;
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            width: 80%;
+            border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            font-family: 'Garamond', serif ;   
+            font-family: 'Garamond', serif ;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        body {
+            background-color: #B1C7C9;
+            margin: 0;
+            padding: 0;
+            height:100vh;
+            text-align: justify;
+            text-justify: inter-word;
         }
 
         #appText h1,
@@ -117,6 +127,8 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
+   
+    color: #FFDDD2;
 }
 
 .dropbtn {
@@ -131,4 +143,27 @@
 .dropbtn:focus,
 .dropbtn:hover {
     background-color: #005f66; /* A bit darker shade for hover effect */
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    background-color: #FFDDD2; /* A reddish color for logout */
+    color: black;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth color transition */
+    margin-right: 20px;
+}
+button:hover {
+    background-color: #006D77;
+    color: white;
+}
+button {
+    background-color: #FFDDD2;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
