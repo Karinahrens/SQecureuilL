@@ -147,5 +147,5 @@ async function destroy(req, res) {
     }
 }
 
-module.exports = { index,indexCategory,indexCategoryDate, indexCategoryVote,indexCategoryStage,indexDate ,indexVote,indexStage,show,orderBy, create, update, destroy }
+module.exports = { index,indexCategory,indexCategoryDate, indexCategoryVote,indexCategoryStage,indexDate ,indexVote,indexStage,show,orderBy, create, update, upVote,destroy }
 
