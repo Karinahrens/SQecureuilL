@@ -1,3 +1,4 @@
+/* Body styling */
 body {
     background-color: #b1c7c9;
     margin: 0;
@@ -8,16 +9,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* .main-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    width: 80%; /* You can adjust this value based on your preference 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    overflow: auto;
-} */
-
+/* Navbar Styling */
 .navbar {
     display: flex;
     justify-content: space-between; /* This will spread out the elements */
@@ -206,4 +198,8 @@ button {
 .button-style:hover {
     background-color: #006D77;
     color: white;
+}
+.dropbtn:focus,
+.dropbtn:hover {
+    background-color: #005f66; /* A bit darker shade for hover effect */
 }
