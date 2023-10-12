@@ -192,3 +192,168 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+body {
+    background-color: #b1c7c9;
+    margin: 0;
+    padding: 0;
+    height:100vh;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* .main-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%; /* You can adjust this value based on your preference 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    overflow: auto;
+} */
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* This will spread out the elements */
+    align-items: center;
+    height: 60px; /* Increased height for better aesthetics with dropdown */
+    background-color: #006d77;
+    color: white;
+    position: relative; /* To position the h1 in the center */
+}
+
+.navbar h1 {
+    margin: 0;
+    position: absolute; /* Absolutely position the title */
+    left: 50%;  /* Centering mechanism */
+    top: 50%;   /* Centering mechanism */
+    transform: translate(-50%, -50%);  /* Centering mechanism */
+}
+
+.navbar h1 a {
+    text-decoration: none; 
+    color: white;          
+    cursor: pointer;      
+}
+.navbar h1 a:visited {
+    color: white;        
+}
+      /* Style for the clickable boxes */
+.box {
+    width: 150px;
+    height: 150px;
+    background-color: #ffddd2;
+    color: #218942;
+    text-align: center;
+    line-height: 150px;
+    margin: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+      /* Style for links inside the boxes */
+.box a {
+    color:#006d77;
+    text-decoration: none;
+    display: block;
+}
+
+.box:hover {
+    background-color: #ffab90; /* Change the background color when hovering */
+    color: #0d2617;           /* Change the text color when hovering */
+    transform: scale(1.05);    /* Scale the box on hover (optional) */
+}
+    
+        /* CSS styles for the white box */
+        #appText {
+            background-color: white;
+            padding: 20px;
+            width: 80%;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Garamond', serif ;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        body {
+            background-color: #B1C7C9;
+            margin: 0;
+            padding: 0;
+            height:100vh;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+#appText h1, #appText h3 {
+    text-align: center;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: lightcyan;
+}
+  
+.topnav a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  
+}
+  
+.topnav a:hover {
+  background-color: black;
+  color: pink;
+}
+  
+.topnav a.active {
+  background-color: bisque;
+  color: black
+}
+p {
+  margin-left:2%;
+} 
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+   
+    color: #FFDDD2;
+}
+
+.dropbtn {
+    background-color: #006d77;
+    color: white;
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:focus,
+.dropbtn:hover {
+    background-color: #005f66; /* A bit darker shade for hover effect */
+}
+
