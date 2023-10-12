@@ -26,6 +26,7 @@
         </div>
 
         <h1><a href="/client/home.html">Posts Dashboard</a></h1>
+        <button id="openPostModalBtn">Create Post</button>
         <button id="logout" class="logout-btn">Logout</button>
 
     </nav>
@@ -58,9 +59,6 @@
                 Order by Number of Votes
             </label>
             <button id="filterButton">Filter</button>
-            <div class="create-post-button">
-                <button id="openPostModalBtn">Create Post</button>
-            </div>
         </aside>
         </div>
         <div class="main-content">
@@ -76,8 +74,8 @@
         <span class="close">&times;</span>
         <h2 id="modalTitle"></h2>
         <p id="modalContent"></p>
-        <p><strong>Author:</strong> <span id="modalAuthor"></span></p>
         <button id="voteBtn">Vote</button>
+        <button id="downVoteBtn">Down Vote</button>
     <button id="deleteBtn">Delete</button>
     </div>
 </div>

@@ -135,7 +135,6 @@ label {
 
 .navbar {
     display: flex;
-    justify-content: space-between; /* This will spread out the elements */
     align-items: center;
     height: 60px; /* Increased height for better aesthetics with dropdown */
     background-color: #006d77;
@@ -190,13 +189,13 @@ label {
     font-weight: bold;
     cursor: pointer;
 }
-.close:hover {
+.close:hover, .close-create:hover {
     color: black;
 }
-.create-post-button {
+/* .create-post-button {
     text-align: center;
     margin: 20px 0;
-}
+} */
 
 button {
     background-color: #ffddd2;
@@ -320,7 +319,7 @@ textarea {
 
 
 
-.logout-btn {
+.logout-btn, .create-post-button {
     padding: 8px 16px;
     background-color: #ffddd2; /* A reddish color for logout */
     color: black;
@@ -377,7 +376,7 @@ textarea {
 }
 
 .graffiti {
-    background-color: black;
+    background-color: wheat;
 }
 .fly-tipping {
     background-color: #faedcb;
@@ -397,16 +396,26 @@ textarea {
 .street-sweeping {
     background-color: #f7d9c4;
 }
-/* .appText {
-    /* background-color:#b1c7c9;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-    /* width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: block;
-} */ 
+.potholes {
+    background-color: paleturquoise;
+}
+.traffic {
+    background-color: lightsalmon;
+}
+
+#openPostModalBtn {
+    margin-left: auto;
+    margin-right: 20px; /* you can adjust this as per your liking */
+}
+
+#openPostModalBtn, .logout-btn {
+    padding: 8px 16px;
+    height: 40px;  /* You can adjust this value based on your preference */
+    line-height: 24px;  /* This ensures text is vertically centered. Adjust as needed based on the height */
+    background-color: #ffddd2;
+    color: black;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;  /* Optional, but adds a nice rounded corner to the buttons */
+}
