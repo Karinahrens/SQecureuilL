@@ -247,7 +247,7 @@ async function loadPosts () {
             'Authorization': localStorage.getItem("token")
         }
     }
-    const response = await fetch("http://localhost:3000/posts", options);
+    const response = await fetch(`${API_ENDPOINT}/posts`, options);
     //console.log(options.headers.Authorization)
     if (options.headers.Authorization) {alert("You've successfully logged in!")}
     else {
