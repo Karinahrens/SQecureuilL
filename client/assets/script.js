@@ -185,3 +185,21 @@ document.getElementById('logout').addEventListener('click', () => {
     localStorage.clear(); 
     window.location.assign('./login.html')
 })
+
+
+async function loadPosts () {
+
+    const options = {
+        headers: {
+            'Authorization': localStorage.getItem("token")
+        }
+    }
+    const response = await fetch("http://localhost:3000/posts", options);
+    //console.log(options.headers.Authorization)
+    if (options.headers.Authorization) {alert("You've successfully logged in!")}
+    else {
+        window.location.assign("./login.html");
+    }
+}
+
+loadPosts();

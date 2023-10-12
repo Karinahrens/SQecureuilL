@@ -1,6 +1,7 @@
 const { Router } = require("express");
 
 const postsController = require("../controllers/postsController");
+const authenticator = require("../middleware/authenticator");
 
 const postsRouter = Router();
 
@@ -19,5 +20,6 @@ postsRouter.post("/", postsController.create);
 postsRouter.delete("/:id", postsController.destroy);
 postsRouter.patch("/:id", postsController.update);
 postsRouter.patch("/:id/Vote", postsController.upVote);
+postsRouter.get("/", authenticator, postsController.index);
 
 module.exports = postsRouter;
