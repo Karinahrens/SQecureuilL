@@ -1,3 +1,5 @@
+const API_ENDPOINT = 'http://localhost:3000/users/register' //'https://backendsqecureuill.onrender.com/';
+
 document.getElementById("register-form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -15,7 +17,7 @@ document.getElementById("register-form").addEventListener("submit", async (e) =>
         })
     }
 
-    const response = await fetch("http://localhost:3000/users/register", options);
+    const response = await fetch(`${API_ENDPOINT}`, options);
     const data = await response.json();
 
     if (response.status == 201) {
