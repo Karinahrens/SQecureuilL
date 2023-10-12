@@ -1,4 +1,23 @@
-        .navbar {
+body {
+    background-color: #b1c7c9;
+    margin: 0;
+    padding: 0;
+    height:100vh;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* .main-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%; /* You can adjust this value based on your preference 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    overflow: auto;
+} */
+
+.navbar {
     display: flex;
     justify-content: space-between; /* This will spread out the elements */
     align-items: center;
@@ -25,29 +44,29 @@
     color: white;        
 }
       /* Style for the clickable boxes */
-      .box {
-          width: 150px;
-          height: 150px;
-          background-color: #ffddd2;
-          color: #218942;
-          text-align: center;
-          line-height: 150px;
-          margin: 10px;
-          display: inline-block;
-          cursor: pointer;
-      }
+.box {
+    width: 150px;
+    height: 150px;
+    background-color: #ffddd2;
+    color: #218942;
+    text-align: center;
+    line-height: 150px;
+    margin: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
       /* Style for links inside the boxes */
-      .box a {
-          color:#006d77;
-          text-decoration: none;
-          display: block;
-      }
+.box a {
+    color:#006d77;
+    text-decoration: none;
+    display: block;
+}
 
-      .box:hover {
-        background-color: #ffab90; /* Change the background color when hovering */
-        color: #0d2617;           /* Change the text color when hovering */
-        transform: scale(1.05);    /* Scale the box on hover (optional) */
-    }
+.box:hover {
+    background-color: #ffab90; /* Change the background color when hovering */
+    color: #0d2617;           /* Change the text color when hovering */
+    transform: scale(1.05);    /* Scale the box on hover (optional) */
+}
     
         /* CSS styles for the white box */
         #appText {
@@ -69,40 +88,39 @@
             text-justify: inter-word;
         }
 
-        #appText h1,
-#appText h3 {
+#appText h1, #appText h3 {
     text-align: center;
 }
 
-        .topnav {
-    overflow: hidden;
-    background-color: lightcyan;
-  }
+.topnav {
+  overflow: hidden;
+  background-color: lightcyan;
+}
   
-  .topnav a {
-    float: left;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    
-  }
+.topnav a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
   
-  .topnav a:hover {
-    background-color: black;
-    color: pink;
-  }
+}
   
-  .topnav a.active {
-    background-color: bisque;
-    color: black
-  }
-  p {
-    margin-left:2%;
-  } 
+.topnav a:hover {
+  background-color: black;
+  color: pink;
+}
+  
+.topnav a.active {
+  background-color: bisque;
+  color: black
+}
+p {
+  margin-left:2%;
+} 
 
- /* Dropdown styles */
+/* Dropdown styles */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -143,27 +161,4 @@
 .dropbtn:focus,
 .dropbtn:hover {
     background-color: #005f66; /* A bit darker shade for hover effect */
-}
-
-.logout-btn {
-    padding: 8px 16px;
-    background-color: #FFDDD2; /* A reddish color for logout */
-    color: black;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s; /* Smooth color transition */
-    margin-right: 20px;
-}
-button:hover {
-    background-color: #006D77;
-    color: white;
-}
-button {
-    background-color: #FFDDD2;
-    color: black;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
