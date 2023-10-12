@@ -103,6 +103,17 @@ class Post {
         return new Post(response.rows[0]);
     }
 
+    async updateVote(data,id) {
+        const {post_votes} = data;
+        const currentVote = await db.query("SELECT post_votes FROM post where post_id= $1;",[this.id ]);
+        //console.log("Vote",currentVote.rows[0].post_votes)
+        const response = await db.query("UPDATE post SET post_votes= $1 WHERE post_id= $2 RETURNING *;",[currentVote.rows[0].post_votes+post_votes, this.id ]);
+        if (response.rows.length != 1) {
+            throw new Error("Unable to update Post.")
+        }
+        return new Post(response.rows[0]);
+    }
+
     async destroy() {
         let response = await db.query("DELETE FROM post WHERE post_id = $1 RETURNING *;", [this.id]);
         return new Post(response.rows[0]);

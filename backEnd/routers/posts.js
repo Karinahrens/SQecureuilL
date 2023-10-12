@@ -18,5 +18,6 @@ postsRouter.get("/:id", postsController.show);
 postsRouter.post("/", postsController.create);
 postsRouter.delete("/:id", postsController.destroy);
 postsRouter.patch("/:id", postsController.update);
+postsRouter.patch("/:id/Vote", postsController.upVote);
 
 module.exports = postsRouter;
