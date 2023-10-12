@@ -44,15 +44,24 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("filterButton").addEventListener('click', applyFilter);
     function applyFilter() {
         const category = categoryFilter.value;
-        const sortOrder = document.querySelector('[name="sort-order"]:checked').value;
+        let sortOrder = document.querySelector('[name="sort-order"]:checked').value;
+        
+        // Adjust the sortOrder value based on the category selection
+        if (category !== 'all' && sortOrder === "vote") {
+            sortOrder = "votes";
+        }
+    
         let endpoint = `${API_ENDPOINT}posts`;
+        
         if (category !== 'all') {
             endpoint = `${API_ENDPOINT}posts/order?category=${category}&sort=${sortOrder}`;
         } else {
             endpoint = `${API_ENDPOINT}posts/${sortOrder}`;
         }
+    
         fetchAndDisplay(endpoint);
     }
+    
     fetchAndDisplay(`${API_ENDPOINT}posts`);
     const modal = document.getElementById("postModal");
     const closeModal = document.querySelector(".close");
