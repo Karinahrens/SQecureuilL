@@ -16,6 +16,10 @@ body {
 
 }
 
+.main-content{
+    width: 80%;
+}
+
 .center-container {
     flex: 1; /* Takes up all available vertical space after navbar */
     display: flex;        
@@ -112,7 +116,7 @@ body {
 }
 .posts-section {
     flex: 3;
-    padding: 20px;
+    padding: 20px; 
 }
 
 label {
