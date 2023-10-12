@@ -67,12 +67,12 @@ body {
     margin: 5px;
 }
 
-.login-btn {
+.login-btn, input[type="submit"]  {
     background-color: #006d77;
     color: white;
 }
 
-.login-btn:hover {
+.login-btn:hover, input[type="submit"]:hover  {
     background-color: #ffddd2;
     color: black;
 }
@@ -329,3 +329,84 @@ textarea {
     transition: background-color 0.3s; /* Smooth color transition */
     margin-right: 20px;
 }
+
+
+/* Style for the fieldsets */
+#login-form fieldset {
+    border: none; /* light gray border */
+    border-radius: 5px; /* rounded corners */
+    padding: 10px 20px; /* top-bottom, left-right padding */
+    margin-bottom: 10px; /* spacing between fieldsets */
+}
+
+/* Style for the labels */
+#login-form label {
+    display: block; /* make them display on a new line */
+    margin-bottom: 8px; /* add some spacing between label and input field */
+}
+
+/* Style for the input fields */
+#login-form input[type="text"], #login-form input[type="password"] {
+    width: 100%; /* make them take the full width of their container */
+    padding: 8px; /* add some internal padding */
+    border: 1px solid #ccc; /* light gray border */
+    border-radius: 4px; /* slightly rounded corners */
+    box-sizing: border-box; /* border is included in total width/height */
+}
+
+#register-form fieldset {
+    border: none; /* light gray border */
+    border-radius: 5px; /* rounded corners */
+    padding: 10px 20px; /* top-bottom, left-right padding */
+    margin-bottom: 10px; /* spacing between fieldsets */
+}
+
+/* Style for the labels */
+#register-form label {
+    display: block; /* make them display on a new line */
+    margin-bottom: 8px; /* add some spacing between label and input field */
+}
+
+/* Style for the input fields */
+#register-form input[type="text"], #register-form input[type="password"] {
+    width: 100%; /* make them take the full width of their container */
+    padding: 8px; /* add some internal padding */
+    border: 1px solid #ccc; /* light gray border */
+    border-radius: 4px; /* slightly rounded corners */
+    box-sizing: border-box; /* border is included in total width/height */
+}
+
+.graffiti {
+    background-color: black;
+}
+.fly-tipping {
+    background-color: #faedcb;
+}
+.noise-disturbance {
+    background-color: #c9e4de;
+}
+.anti-social-behaviour {
+    background-color: #c6def1;
+}
+.parking {
+    background-color: #dbcdf0;
+}
+.damaged-property {
+    background-color: #f2c6de;
+}
+.street-sweeping {
+    background-color: #f7d9c4;
+}
+/* .appText {
+    /* background-color:#b1c7c9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    /* width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+} */ 
