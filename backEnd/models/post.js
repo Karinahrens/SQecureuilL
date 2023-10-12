@@ -2,14 +2,14 @@ const db = require('../database/connect');
 
 class Post {
 
-    constructor({ post_id, post_title, post_content, post_date,post_votes,post_categories,post_Status}) {
+    constructor({ post_id, post_title, post_content, post_date,post_votes,post_categories,post_stage}) {
         this.id = post_id;
         this.title = post_title;
         this.content = post_content;
         this.date =post_date;
         this.votes =post_votes;
         this.categories =post_categories;
-        this.Status =post_Status;
+        this.stage =post_stage;
     }
 
     static async getAll() {
@@ -40,8 +40,8 @@ class Post {
         return response.rows.map(p => new Post(p));
     }
 
-    static async getByCategoryStatus(Category) {
-        const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ORDER BY post_status", [Category]);
+    static async getByCategoryStage(Category) {
+        const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ORDER BY post_stage", [Category]);
         return response.rows.map(p => new Post(p));
     }
     
@@ -55,8 +55,8 @@ class Post {
         return response.rows.map(p => new Post(p));
     }
 
-    static async sortByStatus() {
-        const response = await db.query("SELECT * FROM post ORDER BY post_status");
+    static async sortByStage() {
+        const response = await db.query("SELECT * FROM post ORDER BY post_stage");
         return response.rows.map(p => new Post(p));
     }
 
@@ -68,8 +68,8 @@ class Post {
             case "votes":
                 orderByClause = "ORDER BY post_votes DESC";
                 break;
-            case "status":
-                orderByClause = "ORDER BY post_status";
+            case "stage":
+                orderByClause = "ORDER BY post_stage";
                 break;
             default:
                 orderByClause = ""; // default behavior if no valid sortCriteria is passed

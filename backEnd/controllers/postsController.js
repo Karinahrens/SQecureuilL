@@ -39,10 +39,10 @@ async function indexCategoryVote(req, res) {
     }
 }
 
-async function indexCategoryStatus(req, res) {
+async function indexCategoryStage(req, res) {
     const id = req.params.id;
     try {
-        const posts = await Post.getByCategoryStatus(id);
+        const posts = await Post.getByCategoryStage(id);
         res.status(200).json(posts);
     } catch (err) {
         res.status(500).json({error: err.message})
@@ -67,9 +67,9 @@ async function indexVote(req, res) {
     }
 }
 
-async function indexStatus(req, res) {
+async function indexStage(req, res) {
     try {
-        const posts = await Post.sortByStatus();
+        const posts = await Post.sortByStage();
         res.status(200).json(posts);
     } catch (err) {
         res.status(500).json({error: err.message})
@@ -147,4 +147,5 @@ async function destroy(req, res) {
     }
 }
 
-module.exports = { index,indexCategory,indexCategoryDate, indexCategoryVote,indexCategoryStatus,indexDate ,indexVote,indexStatus,show,orderBy, create, update, upVote ,destroy }
+module.exports = { index,indexCategory,indexCategoryDate, indexCategoryVote,indexCategoryStage,indexDate ,indexVote,indexStage,show,orderBy, create, update, destroy }
+
