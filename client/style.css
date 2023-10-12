@@ -58,7 +58,7 @@ body {
     margin-top: 20px;
 }
 
-.login-btn, .register-btn {
+.login-btn, .register-btn, input[type="submit"] {
     padding: 10px 15px;
     border-radius: 5px;
     border: none;
