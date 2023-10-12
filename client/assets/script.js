@@ -13,6 +13,7 @@ let posts = [];
 
 let currentPostIndex; 
 
+
 document.addEventListener("DOMContentLoaded", function() {
     const postsSection = document.querySelector('.posts-section');
 
@@ -249,6 +250,31 @@ createPostForm.addEventListener("submit", function (event) {
         });
 });
 
+
+const deleteButton = document.getElementById("deleteBtn");
+
+deleteButton.addEventListener("click", () => {
+    console.log("Delete button clicked");
+    console.log("currentPostIndex:", currentPostIndex);
+   
+    if (typeof currentPostIndex !== 'undefined') {
+        const postIdToDelete = posts[currentPostIndex].post_id; 
+        fetch(`${API_ENDPOINT}posts/${postIdToDelete}`, {
+            method: "DELETE",
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            
+            alert("Post deleted successfully!");
+            window.location.href = "/client/home.html";
+        })
+        .catch(error => {
+            console.error("Error deleting the post:", error);
+        });
+    }
+});
 document.getElementById('logout').addEventListener('click', () => {
     //localStorage.removeItem('token');
     
@@ -264,9 +290,9 @@ async function loadPosts () {
             'Authorization': localStorage.getItem("token")
         }
     }
-    const response = await fetch(`${API_ENDPOINT}posts`, options);
+    const response = await fetch(`${API_ENDPOINT}/posts`, options);
     //console.log(options.headers.Authorization)
-    if (options.headers.Authorization) {alert("You've successfully logged in!")}
+    if (options.headers.Authorization) (console.log("You've successfully logged in!"))
     else {
         window.location.assign("./login.html");
     }
