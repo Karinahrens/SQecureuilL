@@ -1,4 +1,4 @@
-const API_ENDPOINT = 'https://backendsqecureuill.onrender.com/';
+const API_ENDPOINT = 'http://localhost:3000/' //'https://backendsqecureuill.onrender.com/';
 
 function performLogin() {
     alert("You've successfully logged in!")
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
         postsToDisplay.forEach(post => {
             postsHTML += `<div class="post">
                 <h3>${post.title}</h3>
-                <h4>${post.Status}</h4>
+                <h4>${post.stage}</h4>
                 <p>${post.content}</p>
                 <p>Category: ${post.categories}</p>
                 <p>Date: ${new Date(post.date).toLocaleDateString()}</p>
@@ -144,8 +144,8 @@ createPostForm.addEventListener("submit", function (event) {
         post_content: content,
         post_date: localDateTime,
         post_categories: category,
-        votes: 0,
-        Status: 'Active'
+        post_votes: 0,
+        post_stage: 'Active'
     };
 
     fetch(`${API_ENDPOINT}posts`, {
