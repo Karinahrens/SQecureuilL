@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function displayPosts(postsToDisplay) {
         let postsHTML = "";
         postsToDisplay.forEach(post => {
-            postsHTML += `<div class="post">
+            postsHTML += `<div class="post" data-post-id="${post.id}">
                 <h3>${post.title}</h3>
                 <h4>${post.stage}</h4>
                 <p>${post.content}</p>
@@ -100,11 +100,63 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("voteBtn").addEventListener("click", () => {
         if (typeof currentPostIndex !== 'undefined') {
-            posts[currentPostIndex].votes += 1;
-            alert("Thanks for voting!");
-            displayPosts(posts); // Re-render the posts after voting
+            const currentPost = posts[currentPostIndex];
+            const postId = currentPost.id; // Assuming your post objects have an 'id' property.
+    
+            // Make a PATCH request to the backend
+            fetch(`${API_ENDPOINT}posts/${postId}/Vote`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ post_votes: 1 }), // Increment by 1
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(updatedPost => {
+                    currentPost.votes = updatedPost.votes;
+                    alert("Thanks for voting!");
+                    displayPosts(posts);
+                })
+                .catch(error => {
+                    console.error("Error updating votes: ", error);
+                });
         }
     });
+    document.getElementById("downVoteBtn").addEventListener("click", () => {
+        if (typeof currentPostIndex !== 'undefined') {
+            const currentPost = posts[currentPostIndex];
+            const postId = currentPost.id;
+    
+            // Make a PATCH request to the backend to decrease the vote
+            fetch(`${API_ENDPOINT}posts/${postId}/downVote`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ post_votes: -1 }), // Decrement by 1
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(updatedPost => {
+                currentPost.votes = updatedPost.votes;
+                alert("Vote removed!");
+                displayPosts(posts);
+            })
+            .catch(error => {
+                console.error("Error removing votes: ", error);
+            });
+        }
+    });
+    
 
     const openPostModalBtn = document.getElementById("openPostModalBtn");
     const createPostModal = document.getElementById("createPostModal");
