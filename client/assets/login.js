@@ -1,4 +1,4 @@
-const API_ENDPOINT = 'http://localhost:3000/users/login' //'https://backendsqecureuill.onrender.com/';
+const API_ENDPOINT = 'https://backendsqecureuill.onrender.com/users/login';
 
 document.getElementById("login-form").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
 
     const response = await fetch(`${API_ENDPOINT}`, options);
     const data = await response.json();
-
+    console.log(options)
     if (response.status == 200) {
         localStorage.setItem("token", data.token);
         window.location.assign("home.html");

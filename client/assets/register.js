@@ -1,4 +1,4 @@
-const API_ENDPOINT = 'http://localhost:3000/users/register' //'https://backendsqecureuill.onrender.com/';
+const API_ENDPOINT = 'https://backendsqecureuill.onrender.com/users/register';
 
 document.getElementById("register-form").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -21,6 +21,7 @@ document.getElementById("register-form").addEventListener("submit", async (e) =>
     const data = await response.json();
 
     if (response.status == 201) {
+        alert("You've successfully created an account!")
         window.location.assign("login.html");
     } else {
         alert(data.error);
