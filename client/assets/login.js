@@ -22,7 +22,9 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     console.log(options)
     if (response.status == 200) {
         localStorage.setItem("token", data.token);
+        alert("Successfully logged in!")
         window.location.assign("home.html");
+
     } else {
         alert(data.error);
     }
