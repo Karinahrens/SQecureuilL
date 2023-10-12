@@ -19,6 +19,36 @@ async function indexCategory(req, res) {
     }
 }
 
+async function indexCategoryDate(req, res) {
+    const id = req.params.id;
+    try {
+        const posts = await Post.getByCategoryDate(id);
+        res.status(200).json(posts);
+    } catch (err) {
+        res.status(500).json({error: err.message})
+    }
+}
+
+async function indexCategoryVote(req, res) {
+    const id = req.params.id;
+    try {
+        const posts = await Post.getByCategoryVote(id);
+        res.status(200).json(posts);
+    } catch (err) {
+        res.status(500).json({error: err.message})
+    }
+}
+
+async function indexCategoryStage(req, res) {
+    const id = req.params.id;
+    try {
+        const posts = await Post.getByCategoryStage(id);
+        res.status(200).json(posts);
+    } catch (err) {
+        res.status(500).json({error: err.message})
+    }
+}
+
 async function indexDate(req, res) {
     try {
         const posts = await Post.sortByDate();
@@ -37,9 +67,9 @@ async function indexVote(req, res) {
     }
 }
 
-async function indexStatus(req, res) {
+async function indexStage(req, res) {
     try {
-        const posts = await Post.sortByStatus();
+        const posts = await Post.sortByStage();
         res.status(200).json(posts);
     } catch (err) {
         res.status(500).json({error: err.message})
@@ -93,6 +123,29 @@ async function update(req, res) {
     }
 }
 
+async function upVote(req, res) {
+    try {
+        const id = parseInt(req.params.id);
+        const post = await Post.getOneById(id);
+        console.log(post);
+        const result = await post.updateVote({ post_votes: 1 }, id); // Just send an increment of 1
+        res.status(200).json(result);
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}
+
+async function downVote(req, res) {
+    try {
+        const id = parseInt(req.params.id);
+        const post = await Post.getOneById(id);
+        const result = await post.updateVote({ post_votes: -1 }, id); // Decrease by 1
+        res.status(200).json(result);
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}
+
 async function destroy(req, res) {
     try {
         const id = req.params.id;
@@ -104,4 +157,5 @@ async function destroy(req, res) {
     }
 }
 
-module.exports = { index,indexCategory, indexDate ,indexVote,indexStatus,show,orderBy, create, update, destroy }
+module.exports = { index,indexCategory,indexCategoryDate, indexCategoryVote,indexCategoryStage,indexDate ,indexVote,indexStage,show,orderBy, create, update, upVote,downVote, destroy }
+

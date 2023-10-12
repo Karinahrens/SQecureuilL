@@ -36,7 +36,16 @@ body {
     height: 50%;
 }
 
-.login-input {
+.login-form {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block; 
+}
+
+.register-form {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -49,7 +58,7 @@ body {
     margin-top: 20px;
 }
 
-.login-btn, .register-btn {
+.login-btn, .register-btn, input[type="submit"] {
     padding: 10px 15px;
     border-radius: 5px;
     border: none;
@@ -272,6 +281,7 @@ textarea {
 .dropdown {
     position: relative;
     display: inline-block;
+    margin-left: 20px;
 }
 
 .dropdown-content {

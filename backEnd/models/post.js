@@ -2,14 +2,14 @@ const db = require('../database/connect');
 
 class Post {
 
-    constructor({ post_id, post_title, post_content, post_date,post_votes,post_categories,post_Status}) {
+    constructor({ post_id, post_title, post_content, post_date,post_votes,post_categories,post_stage}) {
         this.id = post_id;
         this.title = post_title;
         this.content = post_content;
         this.date =post_date;
         this.votes =post_votes;
         this.categories =post_categories;
-        this.Status =post_Status;
+        this.stage =post_stage;
     }
 
     static async getAll() {
@@ -29,6 +29,21 @@ class Post {
         const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1)", [Category]);
         return response.rows.map(p => new Post(p));
     }
+
+    static async getByCategoryDate(Category) {
+        const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ORDER BY post_date DESC", [Category]);
+        return response.rows.map(p => new Post(p));
+    }
+
+    static async getByCategoryVote(Category) {
+        const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ORDER BY post_votes DESC", [Category]);
+        return response.rows.map(p => new Post(p));
+    }
+
+    static async getByCategoryStage(Category) {
+        const response = await db.query("SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ORDER BY post_stage", [Category]);
+        return response.rows.map(p => new Post(p));
+    }
     
     static async sortByDate() {
         const response = await db.query("SELECT * FROM post ORDER BY post_date DESC");
@@ -40,13 +55,12 @@ class Post {
         return response.rows.map(p => new Post(p));
     }
 
-    static async sortByStatus() {
-        const response = await db.query("SELECT * FROM post ORDER BY post_status");
+    static async sortByStage() {
+        const response = await db.query("SELECT * FROM post ORDER BY post_stage");
         return response.rows.map(p => new Post(p));
     }
 
-    static async getPostsByCategoryAndSort(Category, sortCriteria) {
-        let orderByClause;
+    static async getPostsByCategoryAndSort(Category, sortCriteria) {let orderByClause;
         switch (sortCriteria) {
             case "date":
                 orderByClause = "ORDER BY post_date";
@@ -54,16 +68,15 @@ class Post {
             case "votes":
                 orderByClause = "ORDER BY post_votes DESC";
                 break;
-            case "status":
-                orderByClause = "ORDER BY post_status";
+            case "stage":
+                orderByClause = "ORDER BY post_stage";
                 break;
             default:
                 orderByClause = ""; // default behavior if no valid sortCriteria is passed
         }
-        const queryStr = `SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ${orderByClause}`;
-        const response = await db.query(queryStr, [Category]);
-        return response.rows.map(p => new Post(p));
+        const queryStr = `SELECT * FROM post WHERE LOWER(post_categories) = LOWER($1) ${orderByClause}`; const response = await db.query(queryStr, [Category]); return response.rows.map(p => new Post(p));
     }
+    
     static async create(data) {
         const {post_title, post_content,post_date,post_categories } = data;
         let response = await db.query("INSERT INTO post ( post_title, post_content, post_date,post_categories) VALUES ($1, $2,$3,$4) RETURNING post_id;", [post_title, post_content,post_date,post_categories]);
@@ -84,6 +97,17 @@ class Post {
     async updatePost(data,id) {
         const {post_title, post_content,post_date,post_categories } = data;
         const response = await db.query("UPDATE post SET post_title= $1, post_content=$2, post_date=$3,post_categories =$4  WHERE post_id= $5 RETURNING *;",[ post_title, post_content,post_date,post_categories, this.id ]);
+        if (response.rows.length != 1) {
+            throw new Error("Unable to update Post.")
+        }
+        return new Post(response.rows[0]);
+    }
+
+    async updateVote(data,id) {
+        const {post_votes} = data;
+        const currentVote = await db.query("SELECT post_votes FROM post where post_id= $1;",[this.id ]);
+        //console.log("Vote",currentVote.rows[0].post_votes)
+        const response = await db.query("UPDATE post SET post_votes= $1 WHERE post_id= $2 RETURNING *;",[currentVote.rows[0].post_votes+post_votes, this.id ]);
         if (response.rows.length != 1) {
             throw new Error("Unable to update Post.")
         }

@@ -23,6 +23,7 @@ To run the Florin County API locally, follow these steps:
 3. Install the required dependencies.Some independencies may already exist, but by running the below command, you will ensure that you have the latest versions.
 
    ```bash
+   npm install
    npm install express dotenv pg cors
    npm install -D nodemon
 
