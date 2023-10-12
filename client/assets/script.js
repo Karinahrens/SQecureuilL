@@ -1,12 +1,13 @@
 const API_ENDPOINT = 'https://backendsqecureuill.onrender.com/';
 
+
 let posts = [];
 let currentPostIndex;
+
 
 function performLogin() {
     alert("You've successfully logged in!");
 }
-
 function showRegistration() {
     alert("Redirecting to registration page...");
 }
@@ -48,20 +49,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log("Error fetching posts:", error);
             });
     }
-
     document.getElementById("filterButton").addEventListener('click', applyFilter);
-
     function applyFilter() {
         const category = categoryFilter.value;
         const sortOrder = document.querySelector('[name="sort-order"]:checked').value;
 
+
         let endpoint = `${API_ENDPOINT}posts`; 
+
 
         if (category !== 'all') {
             endpoint = `${API_ENDPOINT}posts/order?category=${category}&sort=${sortOrder}`;
         } else {
             endpoint = `${API_ENDPOINT}posts/${sortOrder}`;
         }
+
 
         fetchAndDisplay(endpoint);
     }
@@ -71,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const modal = document.getElementById("postModal");
     const closeModal = document.querySelector(".close");
     const closeCreate = document.querySelector(".close-create");
+
 
     postsSection.addEventListener('click', function(e) {
         const postElement = e.target.closest('.post');
@@ -85,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
     openPostModalBtn.addEventListener("click", function() {
         createPostModal.style.display = "block";
     });
+
     
     closeCreate.onclick = function() {
         createPostModal.style.display = "none";
@@ -105,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if (typeof currentPostIndex !== 'undefined') {
             const currentPost = posts[currentPostIndex];
             const postId = currentPost.id; // Assuming your post objects have an 'id' property.
-    
             // Make a PATCH request to the backend
             fetch(`${API_ENDPOINT}posts/${postId}/Vote`, {
                 method: "PATCH",
@@ -134,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if (typeof currentPostIndex !== 'undefined') {
             const currentPost = posts[currentPostIndex];
             const postId = currentPost.id;
-    
             // Make a PATCH request to the backend to decrease the vote
             fetch(`${API_ENDPOINT}posts/${postId}/downVote`, {
                 method: "PATCH",
@@ -160,6 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+
     createPostForm.addEventListener("submit", function (event) {
         event.preventDefault();
     
@@ -167,6 +170,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const content = document.getElementById("postContent").value;
         const category = document.getElementById("postCategory").value;
     
+
+    createPostForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const title = document.getElementById("postTitle").value;
+        const content = document.getElementById("postContent").value;
+        const category = document.getElementById("postCategory").value;
+
         const currentDate = new Date();
         const dateOptions = {
             year: "numeric",
@@ -178,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
             hour12: false,
         };
         const localDateTime = currentDate.toLocaleString("en-GB", dateOptions);
-    
+
         const postData = {
             post_title: title,
             post_content: content,
@@ -187,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function() {
             post_votes: 0,
             post_stage: 'Active'
         };
-    
+
         fetch(`${API_ENDPOINT}posts`, {
             method: "POST",
             headers: {
@@ -198,7 +208,9 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => {
                 if (!response.ok) {
                     console.error(`HTTP error! Status: ${response.status}`);
+
                     return response.text(); 
+
                 }
                 return response.json();
             })
@@ -206,10 +218,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (data) {
                     console.log("Server response:", data);
                     createPostModal.style.display = "none";
+
     
                     posts.push(data);
                     displayPosts(posts);
     
+
                     document.getElementById("postTitle").value = "";
                     document.getElementById("postContent").value = "";
                     document.getElementById("postCategory").value;
