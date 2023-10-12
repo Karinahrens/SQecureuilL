@@ -120,7 +120,6 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 });
 
-
 createPostForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -206,3 +205,9 @@ deleteButton.addEventListener("click", () => {
         });
     }
 });
+document.getElementById('logout').addEventListener('click', () => {
+    //localStorage.removeItem('token');
+    
+    localStorage.clear(); 
+    window.location.assign('./login.html')
+})

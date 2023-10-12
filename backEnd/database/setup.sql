@@ -30,6 +30,7 @@ CREATE TABLE token (
     FOREIGN KEY (user_id) REFERENCES user_account("user_id")
 );
 
+
 INSERT INTO post (post_title, post_content, post_date, post_categories, post_stage, post_votes)
 VALUES
     ('Graffiti on School wall', 'Large Signs sprayed painted', DATE '2023/10/09', 'Graffiti', 'Active', 19),
@@ -46,4 +47,5 @@ VALUES
     ('Bins are overflowing', 'The public bin on main street has not been cleared for the last two days', DATE '2021/02/09', 'Streets not swept', 'Active', 12),
     ('Rubbish3', 'Black Bins dumped', DATE '2023/02/27', 'Fly tipping', 'Active', 3),
     ('Rubbish4', 'Black Bins dumped', DATE '2023/05/31', 'Fly tipping', 'Active', 6);
+
 

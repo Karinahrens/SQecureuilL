@@ -28,7 +28,7 @@
       .box {
           width: 150px;
           height: 150px;
-          background-color: #006d77;
+          background-color: #ffddd2;
           color: #218942;
           text-align: center;
           line-height: 150px;
@@ -38,10 +38,16 @@
       }
       /* Style for links inside the boxes */
       .box a {
-          color: #e0caca;
+          color:#006d77;
           text-decoration: none;
           display: block;
       }
+
+      .box:hover {
+        background-color: #ffab90; /* Change the background color when hovering */
+        color: #0d2617;           /* Change the text color when hovering */
+        transform: scale(1.05);    /* Scale the box on hover (optional) */
+    }
     
         /* CSS styles for the white box */
         #appText {
@@ -50,7 +56,13 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Garamond', serif ;   
         }
+
+        #appText h1,
+#appText h3 {
+    text-align: center;
+}
 
         .topnav {
     overflow: hidden;
