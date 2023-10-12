@@ -23,7 +23,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     if (response.status == 200) {
         localStorage.setItem("token", data.token);
         alert("Successfully logged in!")
-        window.location.assign("home.html");
+        window.location.assign("/client/categoriespages/categories.html");
 
     } else {
         alert(data.error);
