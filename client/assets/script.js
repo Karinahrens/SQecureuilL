@@ -119,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 });
 
-
 createPostForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -179,3 +178,10 @@ createPostForm.addEventListener("submit", function (event) {
             console.error("Error posting data to the server:", error);
         });
 });
+
+document.getElementById('logout').addEventListener('click', () => {
+    //localStorage.removeItem('token');
+    
+    localStorage.clear(); 
+    window.location.assign('./login.html')
+})
