@@ -16,6 +16,10 @@ body {
 
 }
 
+.main-content{
+    width: 80%;
+}
+
 .center-container {
     flex: 1; /* Takes up all available vertical space after navbar */
     display: flex;        
@@ -67,12 +71,12 @@ body {
     margin: 5px;
 }
 
-.login-btn {
+.login-btn, input[type="submit"]  {
     background-color: #006d77;
     color: white;
 }
 
-.login-btn:hover {
+.login-btn:hover, input[type="submit"]:hover  {
     background-color: #ffddd2;
     color: black;
 }
@@ -112,7 +116,7 @@ body {
 }
 .posts-section {
     flex: 3;
-    padding: 20px;
+    padding: 20px; 
 }
 
 label {
@@ -135,7 +139,6 @@ label {
 
 .navbar {
     display: flex;
-    justify-content: space-between; /* This will spread out the elements */
     align-items: center;
     height: 60px; /* Increased height for better aesthetics with dropdown */
     background-color: #006d77;
@@ -190,13 +193,13 @@ label {
     font-weight: bold;
     cursor: pointer;
 }
-.close:hover {
+.close:hover, .close-create:hover {
     color: black;
 }
-.create-post-button {
+/* .create-post-button {
     text-align: center;
     margin: 20px 0;
-}
+} */
 
 button {
     background-color: #ffddd2;
@@ -207,7 +210,20 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
+.button-style {
+    background-color: #ffddd2;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+.button-style:hover {
+    background-color: #006D77;
+    color: white;
+}
 button:hover {
     background-color: #006D77;
     color: white;
@@ -320,7 +336,7 @@ textarea {
 
 
 
-.logout-btn {
+.logout-btn, .create-post-button {
     padding: 8px 16px;
     background-color: #ffddd2; /* A reddish color for logout */
     color: black;
@@ -328,4 +344,95 @@ textarea {
     cursor: pointer;
     transition: background-color 0.3s; /* Smooth color transition */
     margin-right: 20px;
+}
+
+
+/* Style for the fieldsets */
+#login-form fieldset {
+    border: none; /* light gray border */
+    border-radius: 5px; /* rounded corners */
+    padding: 10px 20px; /* top-bottom, left-right padding */
+    margin-bottom: 10px; /* spacing between fieldsets */
+}
+
+/* Style for the labels */
+#login-form label {
+    display: block; /* make them display on a new line */
+    margin-bottom: 8px; /* add some spacing between label and input field */
+}
+
+/* Style for the input fields */
+#login-form input[type="text"], #login-form input[type="password"] {
+    width: 100%; /* make them take the full width of their container */
+    padding: 8px; /* add some internal padding */
+    border: 1px solid #ccc; /* light gray border */
+    border-radius: 4px; /* slightly rounded corners */
+    box-sizing: border-box; /* border is included in total width/height */
+}
+
+#register-form fieldset {
+    border: none; /* light gray border */
+    border-radius: 5px; /* rounded corners */
+    padding: 10px 20px; /* top-bottom, left-right padding */
+    margin-bottom: 10px; /* spacing between fieldsets */
+}
+
+/* Style for the labels */
+#register-form label {
+    display: block; /* make them display on a new line */
+    margin-bottom: 8px; /* add some spacing between label and input field */
+}
+
+/* Style for the input fields */
+#register-form input[type="text"], #register-form input[type="password"] {
+    width: 100%; /* make them take the full width of their container */
+    padding: 8px; /* add some internal padding */
+    border: 1px solid #ccc; /* light gray border */
+    border-radius: 4px; /* slightly rounded corners */
+    box-sizing: border-box; /* border is included in total width/height */
+}
+
+.graffiti {
+    background-color: wheat;
+}
+.fly-tipping {
+    background-color: #faedcb;
+}
+.noise-disturbance {
+    background-color: #c9e4de;
+}
+.anti-social-behaviour {
+    background-color: #c6def1;
+}
+.parking {
+    background-color: #dbcdf0;
+}
+.damaged-property {
+    background-color: #f2c6de;
+}
+.street-sweeping {
+    background-color: #f7d9c4;
+}
+.potholes {
+    background-color: paleturquoise;
+}
+.traffic {
+    background-color: lightsalmon;
+}
+
+#openPostModalBtn {
+    margin-left: auto;
+    margin-right: 20px; /* you can adjust this as per your liking */
+}
+
+#openPostModalBtn, .logout-btn {
+    padding: 8px 16px;
+    height: 40px;  /* You can adjust this value based on your preference */
+    line-height: 24px;  /* This ensures text is vertically centered. Adjust as needed based on the height */
+    background-color: #ffddd2;
+    color: black;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;  /* Optional, but adds a nice rounded corner to the buttons */
 }

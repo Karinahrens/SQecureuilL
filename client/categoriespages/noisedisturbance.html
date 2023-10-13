@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../florinlogo.ico">
+
     <title>Report a problem</title>
 </head>
 <body>
@@ -25,10 +27,9 @@
         </div>
 
         <h1><a href="../home.html">Posts Dashboard</a></h1>
-        <button class="logout-btn">Logout</button>
-
+        <button id="logout" class="logout-btn">Logout</button>
     </nav>
-    
+    <div id="appText">
     <div class="noisedisturbance">
         <h1>Noise Disturbance</h1>
 
@@ -38,7 +39,7 @@
             <li>Excessively loud music and parties (repeated over a period of time)</li>
             <li>Unreasonable noise from pubs, clubs, bars, and live events</li>
             <li>Persistently noisy neighbors</li>
-            <li>Noise from building sites or building works outside of permitted hours. Please view our permitted hours on the <a href="link-to-permitted-hours-page">pollution control: building and demolition sites page</a>.</li>
+            <li>Noise from building sites or building works outside of permitted hours. Please view our permitted hours on the <a href="../home.html">pollution control: building and demolition sites page</a>.</li>
             <li>Alarms</li>
             <li>Persistent noise from an animal(s) (repeated over a period of time)</li>
             <li>Unreasonable noise from ventilation fans or other such equipment</li>
@@ -46,7 +47,7 @@
     
         <p>Please note that the council is unable to investigate domestic household noise, which includes noise from washing machines, children crying or playing, footsteps, talking, toilet flushing, vacuuming, and furniture being moved.</p>
     
-        <h2>Steps You Can Take Before Making a Complaint</h2>
+        <h3>Steps You Can Take Before Making a Complaint</h3>
         <p>If you are affected by an ongoing noise problem, consider taking these steps first:</p>
     
         <ol>
@@ -55,9 +56,18 @@
             <li>If you still can't solve the issue, report it to us using the online form below.</li>
         </ol>
 
-        <button >Report </button>
-      </div>
+        <div style="text-align: center;">
+            <a href="../home.html" class="button-style">Report</a>
+            <a href="categories.html" class="button-style">See other options</a>
+        </div>
 
-    
+
+        </div>
+
+      <footer>
+        <p>The Florin County Council App is your tool for making a difference in your community. So, whether you're passionate about fixing potholes, improving local parks, or addressing any other concerns, download the app today and start sharing your voice. Together, we can build a stronger, more vibrant Florin County.</p>
+    </footer>
+</div>
+<script src="../assets/script.js"></script> 
 </body>
 </html>

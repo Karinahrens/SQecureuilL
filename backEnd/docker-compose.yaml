@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  testing_db:
+    image: postgres
+    container_name: testing
+    ports:
+      - 5433:5432
+    volumes:
+      - test_db:/var/lib/postgresql/data
+      - ./server/database/:/docker-entrypoint-initdb.d/:ro
+    environment:
+      - POSTGRES_DB=testing
+      - POSTGRES_USER=testing
+      - POSTGRES_PASSWORD=jkljkl
+
+volumes:
+  test_db:
+
+    # TEST_DB_URL=postgres://testing:jkljkl@localhost:5433/testing

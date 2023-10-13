@@ -2,6 +2,39 @@
 
 The Florin County Council have a number of issues. Like every county council they are having to do more with less and government cuts are biting hard. The council is increasingly having to rely on community involvement and to think of creative solutions to keep valued public services running. The council has asked a number of developer teams to come up with a tech solution for a problem that stakeholders in the local community are facing.
 
+# Florin County Council App
+
+Welcome to the Florin County Council App, your tool for community involvement.
+
+## About the App
+
+Our mission is to create a transparent and efficient local government. The Florin County Council App empowers you to report issues, vote on community priorities, and make a direct impact.
+
+## How It Works
+
+- **Report & Prioritize:** Easily report neighborhood issues. Your reports lead to action through community voting.
+
+- **Democracy in Action:** Your votes prioritize the most important concerns in our county.
+
+## Two Ways to Participate
+
+1. **Submit a Report:** Share problems or ideas; your reports can be voted on for support.
+
+2. **Vote on Reports:** See what's trending in your area and influence County Council actions.
+
+## Why Choose Us
+
+- **Transparency:** Our process is open, so you can track issue resolution.
+
+- **Community Collaboration:** Work with neighbors and the County Council for positive change.
+
+- **Efficiency:** Streamlined reporting for quicker results.
+
+- **Direct Impact:** Your voice directly shapes county improvements.
+
+Join us in building a better Florin County. Download the app and share your voice today!
+
+
 ## Installation
 
 To run the Florin County API locally, follow these steps:
