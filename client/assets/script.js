@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
     fetchAndDisplay(`${API_ENDPOINT}posts`);
     const modal = document.getElementById("postModal");
     const closeModal = document.querySelector(".close");
+    const closeCreate = document.querySelector(".close-create");
     postsSection.addEventListener('click', function(e) {
         const postElement = e.target.closest('.post');
         if (postElement) {
@@ -77,12 +78,12 @@ document.addEventListener("DOMContentLoaded", function() {
     closeModal.onclick = () => {
         modal.style.display = "none";
     };
+    closeCreate.onclick = () => {
+        createPostModal.style.display = "none";
+    }
     window.onclick = (event) => {
         if (event.target === modal) {
             modal.style.display = "none";
-        }
-        if (event.target === createPostModal) {
-            createPostModal.style.display = "none";
         }
     };
     document.getElementById("voteBtn").addEventListener("click", () => {
@@ -104,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     return response.json();
                 })
                 .then(updatedPost => {
+                    console.log(updatedPost);
                     currentPost.votes = updatedPost.votes;
                     alert("Thanks for voting!");
                     displayPosts(posts);
@@ -156,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function() {
             second: "2-digit",
             hour12: false,
         };
-        const localDateTime = currentDate.toLocaleString("en-GB", dateOptions);
+        const localDateTime = currentDate.toISOString();
         const postData = {
             post_title: title,
             post_content: content,
