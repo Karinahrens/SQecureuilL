@@ -78,9 +78,10 @@ document.addEventListener("DOMContentLoaded", function() {
     closeModal.onclick = () => {
         modal.style.display = "none";
     };
-    closeCreate.onclick = () => {
-        createPostModal.style.display = "none";
-    }
+    closeCreate.onclick = () +> {
+        createPostModal.style.display = "none"
+    };
+
     window.onclick = (event) => {
         if (event.target === modal) {
             modal.style.display = "none";
