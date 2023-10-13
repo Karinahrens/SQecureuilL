@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
     fetchAndDisplay(`${API_ENDPOINT}posts`);
     const modal = document.getElementById("postModal");
     const closeModal = document.querySelector(".close");
+    const closeCreate = document.querySelector(".close-create");
     postsSection.addEventListener('click', function(e) {
         const postElement = e.target.closest('.post');
         if (postElement) {
@@ -76,6 +77,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     closeModal.onclick = () => {
         modal.style.display = "none";
+    };
+    closeCreate.onclick = () +> {
+        createPostModal.style.display = "none"
     };
     window.onclick = (event) => {
         if (event.target === modal) {
